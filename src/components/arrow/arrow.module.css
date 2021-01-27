@@ -1,0 +1,28 @@
+.arrowButton {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: transparent;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.right > svg {
+    transform: rotate(-90deg);
+}
+
+.left {
+    left: 0;
+}
+
+.left > svg {
+    transform: rotate(-270deg);
+}

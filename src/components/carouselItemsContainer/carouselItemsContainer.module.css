@@ -1,0 +1,5 @@
+.container {
+  overflow-x: visible;
+  transition-property: transform;
+  will-change: transform;
+}

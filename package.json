@@ -1,0 +1,41 @@
+{
+  "name": "react-mobile-carousel",
+  "version": "0.0.1",
+  "description": "A mobile first approach carousel component made with react.",
+  "main": "index.js",
+  "repository": "https://github.com/pedrocostadev/react-mobile-carousel.git",
+  "author": "Pedro Costa <pedro.costa.dev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "dev": "webpack serve --open --mode development",
+    "lint": "eslint src --ext .js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "dotenv-webpack": "^6.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "html-webpack-plugin": "^4.5.1",
+    "prettier": "^2.2.1",
+    "prop-types": "^15.7.2",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.17.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
