@@ -1,3 +1,3 @@
-import MobileCarousel from '@components/MobileCarousel';
+import MobileCarousel from '@components/mobileCarousel';
 
 export default MobileCarousel;
