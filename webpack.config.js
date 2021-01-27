@@ -44,6 +44,7 @@ module.exports = {
     }),
     new Dotenv({
       path: './demo/.env',
+      systemvars: true,
     }),
   ],
   resolve: {
