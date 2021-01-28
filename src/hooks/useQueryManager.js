@@ -27,11 +27,11 @@ export const useQueryManagerProvider = ({ getUrl, getData }) => {
     }));
   };
 
-  const isLastItem = state.currentIndex + 1 < state.items.length;
-  const isLastItemFetched = state.currentIndex + 1 === state.nextOffset;
+  const isLastItem = state.currentIndex + 1 === state.total;
+  const isLastItemFetched = state.currentIndex + 1 >= state.nextOffset;
 
   const fetchData = async () => {
-    if (isLastItemFetched || isLastItem) {
+    if (!isLastItemFetched || isLastItem) {
       return;
     }
 
