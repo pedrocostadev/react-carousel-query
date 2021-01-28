@@ -31,17 +31,32 @@ const renderItem = (item) => {
     >
       <img
         style={{
-          /* object-fit: contain; */
-          backgroundColor: 'grey',
+          display: 'block',
           objectFit: 'cover',
-          height: '95%',
+          height: '80%',
           width: '100%',
         }}
         src={imgSrc}
       />
-      <p style={{ height: '5%', margin: 0, color: 'black', fontSize: '16px' }}>
-        {item.name}
-      </p>
+      <div
+        style={{
+          height: '20%',
+          color: 'black',
+          backgroundColor: 'white',
+        }}
+      >
+        <p style={{ padding: '5px', fontSize: '16px', fontWeight: 'bold' }}>
+          {item.name}
+        </p>
+        <p
+          style={{
+            padding: '5px',
+            fontSize: '14px',
+          }}
+        >
+          {item.description || 'Description not available'}
+        </p>
+      </div>
     </div>
   );
 };
