@@ -52,7 +52,7 @@ const renderItem = (item) => {
 
 render(
   <ReactCarouselQuery
-    fetchStep={2}
+    fetchStep={3}
     renderItem={renderItem}
     getData={getData}
   />,
