@@ -10,7 +10,7 @@ const CarouselItem = ({ item, renderItem }) => (
 );
 
 CarouselItem.propTypes = {
-  item: PropTypes.object, // TODO: fix
+  item: PropTypes.object,
   renderItem: PropTypes.func.isRequired,
 };
 

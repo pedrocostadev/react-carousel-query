@@ -8,6 +8,9 @@ module.exports = {
     path: path.resolve(__dirname, 'public'),
   },
   devtool: 'source-map',
+  experiments: {
+    asset: true,
+  },
   module: {
     rules: [
       {
@@ -35,6 +38,10 @@ module.exports = {
         test: /\.(css|scss)$/,
         use: ['style-loader', 'css-loader'],
         exclude: /\.module\.css$/,
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset/resource',
       },
     ],
   },
