@@ -35,7 +35,7 @@ const CarouselItemsContainer = ({ renderItem }) => {
     decreaseOffset,
     increaseOffset,
   } = useOffset({
-    itemWidth: itemWidth,
+    itemWidth,
     total,
   });
 

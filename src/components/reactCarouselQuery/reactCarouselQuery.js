@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import CarouselItemsContainer from '@components/carouselItemsContainer';
 import { QueryManagerProvider } from '@hooks/useQueryManager';
+import useRerenderOnWindowSize from '@hooks/useRerenderOnWindowSize';
 import Box from '@primitives/box';
 
 const ReactCarouselQuery = ({ renderItem, getData, fetchStep }) => {
+  useRerenderOnWindowSize();
   return (
     <QueryManagerProvider getData={getData} fetchStep={fetchStep}>
       <Box positionRelative overflowHidden fullWidth fullHeight>

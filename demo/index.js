@@ -36,15 +36,13 @@ const renderItem = (item) => {
           objectFit: 'cover',
           height: '80%',
           width: '100%',
-          backgroundImage: 'url(./iconLoading.svg)',
+          background: '#ffffff url("/assets/iconLoading.svg") no-repeat center',
         }}
         src={imgSrc}
       />
-      <div style={{ height: '20%', color: 'black', backgroundColor: 'white' }}>
-        <p style={{ padding: '0 5px', fontSize: '16px', fontWeight: 'bold' }}>
-          {item.name}
-        </p>
-        <p style={{ padding: '0 5px', fontSize: '14px' }}>
+      <div style={{ height: '20%', backgroundColor: 'white' }}>
+        <h3>{item.name}</h3>
+        <p className="lineClamp">
           {item.description || 'Description not available'}
         </p>
       </div>
@@ -54,7 +52,7 @@ const renderItem = (item) => {
 
 render(
   <ReactCarouselQuery
-    fetchStep={5}
+    fetchStep={2}
     renderItem={renderItem}
     getData={getData}
   />,

@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -39,10 +40,6 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
         exclude: /\.module\.css$/,
       },
-      {
-        test: /\.svg$/,
-        type: 'asset/resource',
-      },
     ],
   },
   plugins: [
@@ -52,6 +49,12 @@ module.exports = {
     new Dotenv({
       path: './demo/.env',
       systemvars: true,
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: 'demo/assets', to: 'assets' },
+        { from: 'demo/styles.css', to: '' },
+      ],
     }),
   ],
   resolve: {
