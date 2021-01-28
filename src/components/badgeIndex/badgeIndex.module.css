@@ -5,6 +5,15 @@
     color: #fff;
     opacity: .8;
     font-size: 10px;
+    letter-spacing: 1px;
+    animation: fadeIn 3s;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 @media only screen and (min-width: 768px) {
