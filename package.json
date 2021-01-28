@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build:dev": "webpack --mode development",
-    "build:prod": "webpack --mode production",
+    "build": "webpack --mode production",
     "dev": "webpack serve --open --mode development",
     "lint": "eslint src --ext .js"
   },
