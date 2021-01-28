@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" />
     <title>React Mobile Carousel</title>
     <style>
         body,
@@ -11,10 +11,16 @@
         p {
             margin: 0;
         }
+
+        :root {
+            --safe-area-inset-top: env(safe-area-inset-top);
+            --safe-area-inset-bottom: env(safe-area-inset-bottom);
+            --available: calc(var(--safe-area-inset-top) - var(--safe-area-inset-bottom))
+        }
     </style>
 </head>
 
-<body style="width:100%;height: 800px; background-color:#D7DBDD;">
+<body style="width:100%;height: 700px; max-height: 700px; overflow: hidden; background-color:#D7DBDD;">
     <header style="height: 10%; display: flex; justify-content: center;flex-direction: column;">
         <h1 style="padding: 0 5px;">Marvel Characters</h1>
         <p style="padding: 0 5px;">This is a demo to show react-carousel-query component.</p>
