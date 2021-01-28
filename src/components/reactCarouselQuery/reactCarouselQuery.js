@@ -5,9 +5,9 @@ import CarouselItemsContainer from '@components/carouselItemsContainer';
 import { QueryManagerProvider } from '@hooks/useQueryManager';
 import Box from '@primitives/box';
 
-const MobileCarousel = ({ renderItem, getData }) => {
+const ReactCarouselQuery = ({ renderItem, getData, fetchStep }) => {
   return (
-    <QueryManagerProvider getData={getData}>
+    <QueryManagerProvider getData={getData} fetchStep={fetchStep}>
       <Box positionRelative overflowHidden fullWidth fullHeight>
         <CarouselItemsContainer renderItem={renderItem} />
       </Box>
@@ -15,9 +15,10 @@ const MobileCarousel = ({ renderItem, getData }) => {
   );
 };
 
-MobileCarousel.propTypes = {
+ReactCarouselQuery.propTypes = {
   renderItem: PropTypes.func.isRequired,
   getData: PropTypes.func.isRequired,
+  fetchStep: PropTypes.number,
 };
 
-export default MobileCarousel;
+export default ReactCarouselQuery;

@@ -1,3 +1,3 @@
-import MobileCarousel from '@components/mobileCarousel';
+import ReactCarouselQuery from '@components/reactCarouselQuery';
 
-export default MobileCarousel;
+export default ReactCarouselQuery;

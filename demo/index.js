@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import MobileCarousel from '../src';
+import ReactCarouselQuery from '../src';
 
 const getUrl = (offset, limit) => {
   const BASE_URL = 'https://gateway.marvel.com/v1/public/characters?';
@@ -53,6 +53,10 @@ const renderItem = (item) => {
 };
 
 render(
-  <MobileCarousel renderItem={renderItem} getData={getData} />,
+  <ReactCarouselQuery
+    fetchStep={5}
+    renderItem={renderItem}
+    getData={getData}
+  />,
   document.getElementById('root'),
 );

@@ -9,7 +9,10 @@ export const useQueryManager = () => {
   return React.useContext(UseQueryManagerContext);
 };
 
-export const useQueryManagerProvider = ({ getData }) => {
+export const useQueryManagerProvider = ({
+  getData,
+  fetchStep = DEFAULT_STEP,
+}) => {
   const [state, setState] = React.useState({
     offset: 0,
     total: undefined,
@@ -21,7 +24,7 @@ export const useQueryManagerProvider = ({ getData }) => {
     const { offset: newOffset, items, total } = data;
     setState((currentState) => ({
       ...currentState,
-      offset: newOffset + DEFAULT_STEP,
+      offset: newOffset + fetchStep,
       total,
       items: state.items.concat(items),
     }));
@@ -34,7 +37,7 @@ export const useQueryManagerProvider = ({ getData }) => {
     if (!isLastItemFetched || isLastItem) {
       return;
     }
-    const data = await getData({ offset: state.offset, limit: DEFAULT_STEP });
+    const data = await getData({ offset: state.offset, limit: fetchStep });
     setData(data);
   };
 
@@ -70,8 +73,8 @@ export const useQueryManagerProvider = ({ getData }) => {
   };
 };
 
-export const QueryManagerProvider = ({ children, getData }) => {
-  const queryManager = useQueryManagerProvider({ getData });
+export const QueryManagerProvider = ({ children, getData, fetchStep }) => {
+  const queryManager = useQueryManagerProvider({ getData, fetchStep });
   return (
     <UseQueryManagerContext.Provider value={queryManager}>
       {children}
@@ -82,4 +85,5 @@ export const QueryManagerProvider = ({ children, getData }) => {
 QueryManagerProvider.propTypes = {
   children: PropTypes.node.isRequired,
   getData: PropTypes.func.isRequired,
+  fetchStep: PropTypes.number,
 };
