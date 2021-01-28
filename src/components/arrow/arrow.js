@@ -20,4 +20,4 @@ Arrow.propTypes = {
   variant: PropTypes.oneOf(['left', 'right']).isRequired,
 };
 
-export default Arrow;
+export default React.memo(Arrow);

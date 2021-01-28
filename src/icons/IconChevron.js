@@ -20,4 +20,4 @@ IconChevron.propTypes = {
   className: PropTypes.string,
 };
 
-export default IconChevron;
+export default React.memo(IconChevron);

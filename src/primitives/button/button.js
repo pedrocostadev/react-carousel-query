@@ -9,4 +9,4 @@ Button.propTypes = {
   children: PropTypes.node,
 };
 
-export default Button;
+export default React.memo(Button);

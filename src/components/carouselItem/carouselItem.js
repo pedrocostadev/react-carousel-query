@@ -14,4 +14,4 @@ CarouselItem.propTypes = {
   renderItem: PropTypes.func.isRequired,
 };
 
-export default CarouselItem;
+export default React.memo(CarouselItem);
