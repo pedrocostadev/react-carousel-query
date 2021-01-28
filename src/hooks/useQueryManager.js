@@ -11,31 +11,31 @@ export const useQueryManager = () => {
 
 export const useQueryManagerProvider = ({ getUrl, getData }) => {
   const [state, setState] = React.useState({
-    nextOffset: 0,
+    offset: 0,
     total: undefined,
     items: [],
     currentIndex: 0,
   });
 
   const setData = (data) => {
-    const { offset, items, total } = getData(data);
+    const { offset: newOffset, items, total } = getData(data);
     setState((currentState) => ({
       ...currentState,
-      nextOffset: offset + DEFAULT_STEP,
+      offset: newOffset + DEFAULT_STEP,
       total,
       items: state.items.concat(items),
     }));
   };
 
   const isLastItem = state.currentIndex + 1 === state.total;
-  const isLastItemFetched = state.currentIndex + 1 >= state.nextOffset;
+  const isLastItemFetched = state.currentIndex + 1 >= state.offset;
 
   const fetchData = async () => {
     if (!isLastItemFetched || isLastItem) {
       return;
     }
 
-    const url = getUrl(state.nextOffset, DEFAULT_STEP);
+    const url = getUrl(state.offset, DEFAULT_STEP);
     const { data } = await (await fetch(url)).json();
     setData(data);
   };
