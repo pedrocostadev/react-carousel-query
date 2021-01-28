@@ -30,6 +30,7 @@ const renderItem = (item) => {
       }}
     >
       <img
+        alt={`${item.name} picture`}
         style={{
           display: 'block',
           objectFit: 'cover',
@@ -45,12 +46,12 @@ const renderItem = (item) => {
           backgroundColor: 'white',
         }}
       >
-        <p style={{ padding: '5px', fontSize: '16px', fontWeight: 'bold' }}>
+        <p style={{ padding: '0 5px', fontSize: '16px', fontWeight: 'bold' }}>
           {item.name}
         </p>
         <p
           style={{
-            padding: '5px',
+            padding: '0 5px',
             fontSize: '14px',
           }}
         >
