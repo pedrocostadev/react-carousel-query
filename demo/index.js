@@ -10,12 +10,7 @@ const getData = (response) => {
   return {
     offset,
     total,
-    items: results.map(({ id, name, description, thumbnail }) => ({
-      id,
-      name,
-      description,
-      image: `${thumbnail.path}.${thumbnail.extension}`,
-    })),
+    items: results,
   };
 };
 
@@ -27,6 +22,7 @@ const getUrl = (offset, limit) => {
 };
 
 const renderItem = (item) => {
+  const imgSrc = `${item.thumbnail.path}.${item.thumbnail.extension}`;
   return (
     <div
       style={{
@@ -41,7 +37,7 @@ const renderItem = (item) => {
           height: '95%',
           width: '100%',
         }}
-        src={item.image}
+        src={imgSrc}
       />
       <p style={{ height: '5%', margin: 0, color: 'black', fontSize: '16px' }}>
         {item.name}
