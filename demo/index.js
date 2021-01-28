@@ -15,7 +15,7 @@ const getData = (response) => {
 };
 
 const getUrl = (offset, limit) => {
-  const BASE_URL = 'http://gateway.marvel.com/v1/public/characters?';
+  const BASE_URL = 'https://gateway.marvel.com/v1/public/characters?';
   const apikey = `apikey=${process.env.MARVEL_API_KEY}`;
   const params = `&offset=${offset}&limit=${limit}`;
   return `${BASE_URL}${apikey}${params}`;
