@@ -6,48 +6,51 @@ import CarouselItem from '@components/carouselItem';
 import Arrow from '@components/arrow';
 import { useQueryManager } from '@hooks/useQueryManager';
 import useOffset from '@hooks/useOffset';
+import useLastTouch from '@hooks/useLastTouch';
 
 import styles from './carouselItemsContainer.module.css';
+
+const HALF_SECOND = 500;
+const TRANSITON_SNAP_DURATION = HALF_SECOND + 100;
 
 const CarouselItemsContainer = ({ renderItem }) => {
   const containerRef = React.useRef(null);
 
   const [transitionDuration, setTransitionDuration] = React.useState('0s');
-  const resetTransitionDuration = () =>
-    setTimeout(() => setTransitionDuration('0s'), 600);
 
-  const getImgWidth = () =>
-    containerRef.current && containerRef.current.offsetWidth;
+  const resetTransitionDuration = () =>
+    setTimeout(() => setTransitionDuration('0s'), TRANSITON_SNAP_DURATION);
+
+  const { lastTouch, setLastTouch, resetLastTouch } = useLastTouch();
+
+  const itemWidth = containerRef.current && containerRef.current.offsetWidth;
 
   const { currentIndex, total, items, next, previous } = useQueryManager();
   const {
     offset,
-    lastTouch,
+    maxOffset,
     setOffset,
-    setLastTouch,
-    resetLastTouch,
     setNextOffset,
     setPreviousOffset,
     decreaseOffset,
     increaseOffset,
   } = useOffset({
-    itemWidth: getImgWidth(),
+    itemWidth: itemWidth,
+    total,
   });
-
-  const getMaxOffset = React.useCallback(() => total * getImgWidth(), [total]);
 
   const onMovement = (delta) => {
     setOffset((currentOffset) => {
       let nextOffset = currentOffset + delta;
       const isNegativeOffset = nextOffset < 0;
-      const isInvalidOffset = nextOffset > getMaxOffset();
+      const isInvalidOffset = nextOffset > maxOffset;
 
       if (isNegativeOffset) {
         return 0;
       }
 
       if (isInvalidOffset) {
-        return getMaxOffset();
+        return maxOffset;
       }
 
       return nextOffset;
@@ -55,7 +58,7 @@ const CarouselItemsContainer = ({ renderItem }) => {
   };
 
   const onMovementEnd = () => {
-    const endPosition = offset / getImgWidth();
+    const endPosition = offset / itemWidth;
     const endPartial = endPosition % 1;
 
     setTransitionDuration('0.5s');
@@ -80,7 +83,7 @@ const CarouselItemsContainer = ({ renderItem }) => {
       return;
     }
 
-    setOffset(() => currentIndex * getImgWidth());
+    setOffset(() => currentIndex * itemWidth);
     resetTransitionDuration();
   };
 

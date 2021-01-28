@@ -1,18 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const initialState = {
-  offset: 0,
-  limit: 3,
-  total: undefined,
-  items: [],
-  isLoading: false,
-  currentIndex: 0,
-};
-
 const DEFAULT_STEP = 3;
 
-export const UseQueryManagerContext = React.createContext(initialState);
+export const UseQueryManagerContext = React.createContext({});
 
 export const useQueryManager = () => {
   return React.useContext(UseQueryManagerContext);
@@ -20,12 +11,9 @@ export const useQueryManager = () => {
 
 export const useQueryManagerProvider = ({ getUrl, getData }) => {
   const [state, setState] = React.useState({
-    currentOffset: 0,
     nextOffset: 0,
-    limit: 3,
     total: undefined,
     items: [],
-    isLoading: true,
     currentIndex: 0,
   });
 
@@ -33,26 +21,20 @@ export const useQueryManagerProvider = ({ getUrl, getData }) => {
     const { offset, items, total } = getData(data);
     setState((currentState) => ({
       ...currentState,
-      currentOffset: offset,
       nextOffset: offset + DEFAULT_STEP,
       total,
       items: state.items.concat(items),
-      isLoading: false,
     }));
   };
 
-  const setLoading = (isLoading) =>
-    setState((currentState) => ({ ...currentState, isLoading: isLoading }));
+  const isLastItem = state.currentIndex + 1 < state.items.length;
+  const isLastItemFetched = state.currentIndex + 1 === state.nextOffset;
 
   const fetchData = async () => {
-    if (
-      state.currentIndex + 1 < state.nextOffset ||
-      state.currentIndex + 1 < state.items.length
-    ) {
+    if (isLastItemFetched || isLastItem) {
       return;
     }
 
-    setLoading(true);
     const url = getUrl(state.nextOffset, DEFAULT_STEP);
     const { data } = await (await fetch(url)).json();
     setData(data);
