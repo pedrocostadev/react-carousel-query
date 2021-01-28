@@ -1,5 +1,12 @@
 .container {
-  overflow-x: visible;
-  transition-property: transform;
-  will-change: transform;
+	overflow-x: visible;
+	transition-property: transform;
+	will-change: transform;
+}
+
+.badgeIndex {
+	position: absolute;
+	top: 15px;
+	z-index: 1;
+	right: 15px;
 }

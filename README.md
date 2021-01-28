@@ -20,14 +20,18 @@ import ReactCarouselQuery from 'react-carousel-query';
 
 ```
   <ReactCarouselQuery 
+    hideIndex
     fetchStep={5}
+    renderBadge={(currentIndex,total) => <span>currentIndex - total</span>}
     renderItem={renderItem}
     getData={getData}
   />
 ```
 ### Props
 - `fetchStep`: Number of items requested in each GET call (optional, default is 3)
-- `renderItem`: Render each slide as you wish! 
+- `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
+- `renderBadge`: Render the bash as you wish. (optional)
+- `renderItem`: Render each slide as you wish!
 - `getData`: Async function that should return the fetched items. Should respect the following format:
 ```
 { offset: number; total: number; items: { id }[] }

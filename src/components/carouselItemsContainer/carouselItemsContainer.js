@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import FlexContainer from '@primitives/flexContainer';
 import CarouselItem from '@components/carouselItem';
 import Arrow from '@components/arrow';
+import BadgeIndex from '@components/badgeIndex';
 import { useQueryManager } from '@hooks/useQueryManager';
 import useOffset from '@hooks/useOffset';
 import useLastTouch from '@hooks/useLastTouch';
@@ -13,7 +14,7 @@ import styles from './carouselItemsContainer.module.css';
 const HALF_SECOND = 500;
 const TRANSITON_SNAP_DURATION = HALF_SECOND + 100;
 
-const CarouselItemsContainer = ({ renderItem }) => {
+const CarouselItemsContainer = ({ renderItem, renderBadge, hideIndex }) => {
   const containerRef = React.useRef(null);
 
   const [transitionDuration, setTransitionDuration] = React.useState('0s');
@@ -113,6 +114,14 @@ const CarouselItemsContainer = ({ renderItem }) => {
   };
   return (
     <>
+      {!hideIndex && (
+        <BadgeIndex
+          renderBadge={renderBadge}
+          className={styles.badgeIndex}
+          currentIndex={currentIndex + 1}
+          total={total}
+        />
+      )}
       <Arrow variant="left" onClick={onPrevious} />
       <FlexContainer
         ref={containerRef}
@@ -138,6 +147,8 @@ const CarouselItemsContainer = ({ renderItem }) => {
 
 CarouselItemsContainer.propTypes = {
   renderItem: PropTypes.func.isRequired,
+  renderBadge: PropTypes.func,
+  hideIndex: PropTypes.bool,
 };
 
 export default CarouselItemsContainer;

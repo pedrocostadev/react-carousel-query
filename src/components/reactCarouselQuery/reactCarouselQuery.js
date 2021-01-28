@@ -6,12 +6,12 @@ import { QueryManagerProvider } from '@hooks/useQueryManager';
 import useRerenderOnWindowSize from '@hooks/useRerenderOnWindowSize';
 import Box from '@primitives/box';
 
-const ReactCarouselQuery = ({ renderItem, getData, fetchStep }) => {
+const ReactCarouselQuery = ({ getData, fetchStep, ...props }) => {
   useRerenderOnWindowSize();
   return (
     <QueryManagerProvider getData={getData} fetchStep={fetchStep}>
       <Box positionRelative overflowHidden fullWidth fullHeight>
-        <CarouselItemsContainer renderItem={renderItem} />
+        <CarouselItemsContainer {...props} />
       </Box>
     </QueryManagerProvider>
   );
@@ -19,8 +19,10 @@ const ReactCarouselQuery = ({ renderItem, getData, fetchStep }) => {
 
 ReactCarouselQuery.propTypes = {
   renderItem: PropTypes.func.isRequired,
+  renderBadge: PropTypes.func,
   getData: PropTypes.func.isRequired,
   fetchStep: PropTypes.number,
+  hideIndex: PropTypes.bool,
 };
 
 export default ReactCarouselQuery;
