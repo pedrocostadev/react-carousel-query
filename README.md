@@ -29,9 +29,11 @@ import ReactCarouselQuery from 'react-carousel-query';
 - `fetchStep`: Number of items requested in each GET call (optional, default is 3)
 - `renderItem`: Render each slide as you wish! 
 - `getData`: Async function that should return the fetched items. Should respect the following format:
- ```{ offset: number; total: number; items: { id }[] }```
+```
+{ offset: number; total: number; items: { id }[] }
+```
 
-- Still don't know how to use it? See the demo source code [here](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js)
+Still don't know how to use it? See the demo source code [here](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js)!
 
 ### Setup
 - `yarn` on root folder
