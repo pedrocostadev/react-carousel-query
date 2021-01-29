@@ -1,6 +1,6 @@
 {
-  "name": "react-mobile-carousel",
-  "version": "0.0.1",
+  "name": "react-carousel-query",
+  "version": "0.0.2",
   "description": "A mobile first approach carousel component made with react.",
   "main": "src/index.js",
   "repository": "https://github.com/pedrocostadev/react-mobile-carousel.git",
@@ -52,8 +52,8 @@
     "react-dom": "^17.0.1"
   },
   "husky": {
-		"hooks": {
-			"pre-commit": "yarn lint && yarn test"
-		}
-	}
+    "hooks": {
+      "pre-commit": "yarn lint && yarn test"
+    }
+  }
 }
