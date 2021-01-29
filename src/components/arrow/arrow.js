@@ -7,10 +7,12 @@ import Button from '@primitives/button';
 
 import styles from './arrow.module.css';
 
-const Arrow = ({ variant, ...buttonProps }) => (
+const Arrow = ({ variant, showOnMobile, ...buttonProps }) => (
   <Button
     {...buttonProps}
-    className={classnames(styles.arrowButton, styles[variant])}
+    className={classnames(styles.arrowButton, styles[variant], {
+      [styles.showOnMobile]: showOnMobile,
+    })}
   >
     <IconChevron />
   </Button>
@@ -18,6 +20,7 @@ const Arrow = ({ variant, ...buttonProps }) => (
 
 Arrow.propTypes = {
   variant: PropTypes.oneOf(['left', 'right']).isRequired,
+  showOnMobile: PropTypes.bool,
 };
 
 export default React.memo(Arrow);

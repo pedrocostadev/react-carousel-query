@@ -15,7 +15,12 @@ import styles from './carouselItemsContainer.module.css';
 const HALF_SECOND = 500;
 const TRANSITON_SNAP_DURATION = HALF_SECOND + 100;
 
-const CarouselItemsContainer = ({ renderItem, renderBadge, hideIndex }) => {
+const CarouselItemsContainer = ({
+  renderItem,
+  renderBadge,
+  hideIndex,
+  showArrowsOnMobile,
+}) => {
   const containerRef = React.useRef(null);
 
   const [transitionDuration, setTransitionDuration] = React.useState('0s');
@@ -124,7 +129,11 @@ const CarouselItemsContainer = ({ renderItem, renderBadge, hideIndex }) => {
           total={total}
         />
       )}
-      <Arrow variant="left" onClick={onPrevious} />
+      <Arrow
+        variant="left"
+        showOnMobile={showArrowsOnMobile}
+        onClick={onPrevious}
+      />
       <FlexContainer
         ref={containerRef}
         fullHeight
@@ -142,7 +151,11 @@ const CarouselItemsContainer = ({ renderItem, renderBadge, hideIndex }) => {
           <CarouselItem key={item.id} item={item} renderItem={renderItem} />
         ))}
       </FlexContainer>
-      <Arrow variant="right" onClick={onNext} />
+      <Arrow
+        variant="right"
+        showOnMobile={showArrowsOnMobile}
+        onClick={onNext}
+      />
     </>
   );
 };
@@ -151,6 +164,7 @@ CarouselItemsContainer.propTypes = {
   renderItem: PropTypes.func.isRequired,
   renderBadge: PropTypes.func,
   hideIndex: PropTypes.bool,
+  showArrowsOnMobile: PropTypes.bool,
 };
 
 export default CarouselItemsContainer;

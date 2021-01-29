@@ -1,5 +1,5 @@
+
 .arrowButton {
-	display: none;
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -10,16 +10,20 @@
 	outline: none;
 	color: white;
 	padding: 0;
+	max-height: 40px;
+    top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-@media only screen and (min-width: 768px) {
-	.arrowButton {
-		display: inline-block;
-	}
+.arrowButton:not(.showOnMobile) {
+	display: none;
 }
 
 .right {
-	right: 0;
+	right: 1px;
 }
 
 .right > svg {
@@ -27,9 +31,23 @@
 }
 
 .left {
-	left: 0;
+	left: 1px;
 }
 
 .left > svg {
 	transform: rotate(-270deg);
+}
+
+@media only screen and (min-width: 768px) {
+	.arrowButton {
+		display: flex;
+	}
+
+	.left {
+		left: 5px;
+	}
+
+	.right {
+		right: 5px;
+	}
 }

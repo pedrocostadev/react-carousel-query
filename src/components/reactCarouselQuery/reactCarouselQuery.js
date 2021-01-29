@@ -23,6 +23,7 @@ ReactCarouselQuery.propTypes = {
   getData: PropTypes.func.isRequired,
   fetchStep: PropTypes.number,
   hideIndex: PropTypes.bool,
+  showArrowsOnMobile: PropTypes.bool,
 };
 
 export default ReactCarouselQuery;

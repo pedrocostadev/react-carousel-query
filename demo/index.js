@@ -53,6 +53,7 @@ const renderItem = (item) => {
 
 render(
   <ReactCarouselQuery
+    showArrowsOnMobile
     fetchStep={3}
     renderItem={renderItem}
     getData={getData}
