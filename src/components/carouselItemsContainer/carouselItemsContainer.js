@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import FlexContainer from '@primitives/flexContainer';
 import CarouselItem from '@components/carouselItem';
@@ -117,7 +118,7 @@ const CarouselItemsContainer = ({ renderItem, renderBadge, hideIndex }) => {
       {!hideIndex && (
         <BadgeIndex
           renderBadge={renderBadge}
-          className={styles.badgeIndex}
+          className={classnames(styles.badgeIndex)}
           currentIndex={currentIndex + 1}
           total={total}
         />
