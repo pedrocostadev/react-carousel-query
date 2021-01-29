@@ -2,13 +2,14 @@
   "name": "react-mobile-carousel",
   "version": "0.0.1",
   "description": "A mobile first approach carousel component made with react.",
-  "main": "index.js",
+  "main": "src/index.js",
   "repository": "https://github.com/pedrocostadev/react-mobile-carousel.git",
   "author": "Pedro Costa <pedro.costa.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
+    "build:component": "babel src -d componentBuild --copy-files",
     "start": "webpack serve --mode production",
     "start:dev": "webpack serve --open --mode development",
     "lint": "eslint src --ext .js"
@@ -17,6 +18,7 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@babel/cli": "^7.12.10",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
