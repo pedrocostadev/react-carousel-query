@@ -37,6 +37,7 @@ const CarouselItemsContainer = ({ renderItem, renderBadge, hideIndex }) => {
     decreaseOffset,
     increaseOffset,
   } = useOffset({
+    currentIndex,
     itemWidth,
     total,
   });
