@@ -7,7 +7,6 @@ const useRerenderOnWindowSize = () => {
 
   React.useLayoutEffect(() => {
     window.addEventListener('resize', () => {
-      console.log('resize');
       forceUpdate();
     });
     return () => window.removeEventListener('resize', forceUpdate);
