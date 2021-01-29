@@ -46,6 +46,7 @@ body {
 @media only screen and (min-width: 768px) {
 	.root {
 		max-width: 600px;
+		box-shadow: 0px 3px 11px 0px rgba(255, 255, 255, 0.7);
 	}
 }
 

@@ -5,7 +5,8 @@ const IconChevron = ({ className }) => (
   <svg
     className={className}
     viewBox="0 0 8 5"
-    height="22px"
+    height="15px"
+    width="40px"
     stroke="currentColor"
     fill="none"
     fillRule="evenodd"
