@@ -14,7 +14,8 @@
     "start:dev": "webpack serve --open --mode development",
     "lint": "eslint src --ext .js",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --collect-coverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -22,6 +23,7 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "@testing-library/react": "^11.2.3",
+    "@testing-library/react-hooks": "^5.0.3",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",

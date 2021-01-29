@@ -9,6 +9,7 @@ import styles from './arrow.module.css';
 
 const Arrow = ({ variant, showOnMobile, ...buttonProps }) => (
   <Button
+    data-testid={`button-${variant}`}
     {...buttonProps}
     className={classnames(styles.arrowButton, styles[variant], {
       [styles.showOnMobile]: showOnMobile,

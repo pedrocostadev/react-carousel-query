@@ -25,7 +25,7 @@ const getData = async ({ offset, limit }) => {
   return formatData(data);
 };
 
-const renderItem = (item) => {
+const renderItem = ({ item }) => {
   const imgSrc = `${item.thumbnail.path}.${item.thumbnail.extension}`;
   return (
     <div style={{ height: '100%' }}>

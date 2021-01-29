@@ -86,6 +86,7 @@ module.exports = {
     '^@primitives(.*)$': '<rootDir>/src/primitives$1',
     '^@hooks(.*)$': '<rootDir>/src/hooks$1',
     '^@icons(.*)$': '<rootDir>/src/icons$1',
+    '^@utils(.*)$': '<rootDir>/src/utils$1',
     '\\.(css|less)$': 'identity-obj-proxy',
   },
 

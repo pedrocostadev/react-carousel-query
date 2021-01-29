@@ -1,6 +1,6 @@
 import React from 'react';
 
-const useRerenderOnWindowSize = () => {
+const useRerenderOnWindowResize = () => {
   // Force component to re render. We don't need the window size
   // value, just that component re renders.
   const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
@@ -15,4 +15,4 @@ const useRerenderOnWindowSize = () => {
   return forceUpdate;
 };
 
-export default useRerenderOnWindowSize;
+export default useRerenderOnWindowResize;

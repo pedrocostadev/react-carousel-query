@@ -5,7 +5,7 @@ import Box from '@primitives/box';
 
 const CarouselItem = ({ item, renderItem }) => (
   <Box fullMaxHeight fullHeight fullWidth fullMinWidth>
-    {renderItem(item)}
+    {renderItem({ item })}
   </Box>
 );
 

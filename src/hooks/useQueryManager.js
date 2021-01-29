@@ -5,9 +5,7 @@ const DEFAULT_STEP = 3;
 
 export const UseQueryManagerContext = React.createContext({});
 
-export const useQueryManager = () => {
-  return React.useContext(UseQueryManagerContext);
-};
+export const useQueryManager = () => React.useContext(UseQueryManagerContext);
 
 export const useQueryManagerProvider = ({
   getData,

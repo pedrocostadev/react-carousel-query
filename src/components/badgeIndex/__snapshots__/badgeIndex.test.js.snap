@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BadgeIndex /> It should render 1`] = `
+<div>
+  <span
+    class="badgeIndex fadeInFadeOut"
+  >
+    1
+    /3
+  </span>
+</div>
+`;
+
+exports[`<BadgeIndex /> It should render only current index where there is no total 1`] = `
+<div>
+  <span
+    class="badgeIndex fadeInFadeOut"
+  >
+    222
+    
+  </span>
+</div>
+`;

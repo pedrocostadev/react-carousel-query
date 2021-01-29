@@ -12,18 +12,18 @@ describe('<Arrow />', () => {
 
   test('It should call onClick', () => {
     const { getByTestId } = render(
-      <Arrow data-testid="arrowLeft" variant="left" onClick={onClick} />,
+      <Arrow data-testid="arrow-left" variant="left" onClick={onClick} />,
     );
-    const arrowButton = getByTestId('arrowLeft');
+    const arrowButton = getByTestId('arrow-left');
     fireEvent.click(arrowButton);
     expect(onClick).toBeCalledTimes(1);
   });
 
   test('It should have LEFT classe when variant is left', () => {
     const { getByTestId } = render(
-      <Arrow data-testid="arrowLeft" variant="left" onClick={onClick} />,
+      <Arrow data-testid="arrow-left" variant="left" onClick={onClick} />,
     );
-    const arrowButton = getByTestId('arrowLeft');
+    const arrowButton = getByTestId('arrow-left');
     expect(arrowButton.classList.contains('left')).toBe(true);
   });
 
@@ -39,12 +39,12 @@ describe('<Arrow />', () => {
     const { getByTestId } = render(
       <Arrow
         showOnMobile
-        data-testid="arrowLeft"
+        data-testid="arrow-left"
         variant="left"
         onClick={onClick}
       />,
     );
-    const arrowButton = getByTestId('arrowLeft');
+    const arrowButton = getByTestId('arrow-left');
     expect(arrowButton.classList.contains('showOnMobile')).toBe(true);
   });
 });

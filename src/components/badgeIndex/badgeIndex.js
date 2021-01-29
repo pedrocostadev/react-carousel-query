@@ -14,7 +14,7 @@ const BadgeIndex = ({
   ...props
 }) => {
   if (typeof renderBadge === 'function') {
-    return renderBadge(currentIndex, total);
+    return renderBadge({ currentIndex, total });
   }
 
   const [showAnimation, setShowAnimation] = React.useState(false);
