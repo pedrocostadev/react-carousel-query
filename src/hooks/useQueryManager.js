@@ -49,7 +49,7 @@ export const useQueryManagerProvider = ({
     setState((currentState) => ({
       ...currentState,
       currentIndex:
-        (state.currentIndex + 1) === state.total
+        state.currentIndex + 1 === state.total
           ? state.currentIndex
           : state.currentIndex + 1,
     }));
