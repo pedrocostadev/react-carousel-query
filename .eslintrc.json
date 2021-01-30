@@ -21,6 +21,7 @@
         "react",
         "jest"
     ],
+    "ignorePatterns": ["./index.d.ts"],
     "rules": {
     },
     "settings": {

@@ -9,6 +9,7 @@
 - Allow you to render slides as you wish
 - Ensures a good performance
 - Prepared for mobile and desktop
+- TypeScript declarations included
 
 Demo [here](https://react-carousel-query.vercel.app/)
 
@@ -37,8 +38,8 @@ import ReactCarouselQuery from 'react-carousel-query';
 - `fetchStep`: Number of items requested in each GET call (optional, default is 3)
 - `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
 - `showArrowsOnMobile`: Show arrows on mobile (optional, default is false)
-- `renderBadge`: Render the bash as you wish. (optional)
-- `renderItem`: Render each slide as you wish!
+- `renderBadge`: Render the badge as you wish. (optional)
+- `renderItem`: Render each slide as you wish! You can even render more than one at once using the `getData` prop.
 - `getData`: Async function that should return the fetched items. Should respect the following format:
 ```
 { offset: number; total: number; items: { id }[] }
@@ -73,7 +74,6 @@ Still don't know how to use it? See the demo source code [here](https://github.c
 
 Contributions are welcome. Just open a PR and feel free to contact me :-).
 
-### TODO
+### ToDo
 
-- TypeScript types
 - Provide more examples
