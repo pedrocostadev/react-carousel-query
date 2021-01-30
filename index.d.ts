@@ -7,7 +7,7 @@ declare module 'react-carousel-query' {
   
     interface ReactCarouselQueryProps {
       renderItem: ({ item }: { item: Item }) => React.ReactElement;
-      getData: ({ offset, limit }: { offset: number; limit: number }) => React.ReactElement;
+      getData: ({ offset, limit, total }: { offset: number; limit: number, total: number }) => React.ReactElement;
       renderBadge?: () => React.ReactElement;
       fetchStep?: number;
       hideIndex?: boolean;

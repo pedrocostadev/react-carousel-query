@@ -31,7 +31,7 @@ const renderItem = ({ item }) => {
     <div style={{ height: '100%' }}>
       <img
         draggable={false}
-        alt={`${item.name} picture`}
+        alt={item.name}
         style={{
           display: 'block',
           objectFit: 'cover',
