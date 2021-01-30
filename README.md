@@ -1,5 +1,7 @@
 # react-carousel-query
 
+[![NPM](https://nodei.co/npm/react-carousel-query.png)](https://npmjs.org/package/react-carousel-query)
+
 - React Component
 - Developed to be used as a Infinite Carousel but can be used also with limited resources
 - Handles the pagination requests for you
@@ -8,9 +10,10 @@
 - Ensures a good performance
 - Prepared for mobile and desktop
 
+Demo [here](https://react-carousel-query.vercel.app/)
+
 ![Screenshot](./screenshots/iphone-screencast.gif)
 
-Demo [here](https://react-carousel-query.vercel.app/)
 ## How to use
 
 - Import
