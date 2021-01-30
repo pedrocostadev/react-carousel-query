@@ -78,4 +78,4 @@ Contributions are welcome. Just open a PR and feel free to contact me :-).
 
 ### ToDo
 
-- Provide more examples
+- Add missing tests
