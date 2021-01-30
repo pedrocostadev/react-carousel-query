@@ -1,1 +1,9 @@
 demo/
+componentBuild/
+coverage/
+public/
+screenshots/
+src/
+webpack.config.js
+jest.config.js
+babel.config.json
