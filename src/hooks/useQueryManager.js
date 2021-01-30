@@ -61,7 +61,9 @@ export const useQueryManagerProvider = ({
     }));
   };
 
-  React.useEffect(fetchData, [state.currentIndex]);
+  React.useEffect(() => {
+    fetchData();
+  }, [state.currentIndex]);
 
   return {
     ...state,
