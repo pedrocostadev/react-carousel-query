@@ -72,3 +72,8 @@ Still don't know how to use it? See the demo source code [here](https://github.c
 ### Contributions
 
 Contributions are welcome. Just open a PR and feel free to contact me :-).
+
+### TODO
+
+- TypeScript types
+- Provide more examples
