@@ -1,6 +1,6 @@
 {
   "name": "react-carousel-query",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "description": "A infinite carousel component made with react that handles the pagination for you.",
   "keywords": ["React", "Carousel", "Infinite", "Query", "Slides"],
   "main": "dist/index.js",
@@ -46,7 +46,9 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.17.0",
     "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "dependencies": {
     "classnames": "^2.2.6"
