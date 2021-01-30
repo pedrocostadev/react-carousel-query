@@ -1,11 +1,14 @@
 # react-carousel-query
 
-react-carousel-query is a:
 - React Component
-- Infinite Carousel 
+- Developed to be used as a Infinite Carousel but can be used also with limited resources
+- Handles the pagination requests for you
 - Dependencies free (only React)
 - Allow you to render slides as you wish
-- Handles the pagination requests for you but you can also use local resources
+- Ensures a good performance
+- Prepared for mobile and desktop
+
+![Screenshot](./screenshots/iphone-screencast.gif)
 
 Demo [here](https://react-carousel-query.vercel.app/)
 ## How to use
