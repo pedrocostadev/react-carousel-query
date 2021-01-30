@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "build:dev": "webpack --mode development",
-    "build:component": "babel src -d componentBuild --copy-files",
+    "build:component": "babel src -d dist --copy-files",
     "start": "webpack serve --mode production",
     "start:dev": "webpack serve --open --mode development",
     "lint": "eslint src --ext .js",
@@ -25,6 +25,7 @@
     "@testing-library/react": "^11.2.3",
     "@testing-library/react-hooks": "^5.0.3",
     "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "^4.1.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
     "dotenv-webpack": "^6.0.0",
