@@ -1,6 +1,6 @@
 {
   "name": "react-carousel-query",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A infinite carousel component made with react that handles the pagination for you.",
   "main": "src/index.js",
   "repository": "https://github.com/pedrocostadev/react-mobile-carousel.git",
