@@ -15,7 +15,7 @@ Demo [here](https://react-carousel-query.vercel.app/)
 
 Playground on repl [here](https://repl.it/@pedrocostadev/react-carousel-query)
 
-![Screenshot](./screenshots/iphone-screencast.gif)
+![Screenshot](./screenshots/demo.gif)
 
 ## How to use
 
