@@ -41,9 +41,11 @@ const renderItem = ({ item }) => {
         }}
         src={imgSrc}
       />
-      <div style={{ height: '20%', backgroundColor: 'white' }}>
+      <div
+        style={{ height: '20%', backgroundColor: 'white', color: '#151515' }}
+      >
         <h3>{item.name}</h3>
-        <p className="lineClamp">
+        <p className="line-clamp">
           {item.description || 'Description not available'}
         </p>
       </div>

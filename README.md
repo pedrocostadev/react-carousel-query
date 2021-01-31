@@ -38,7 +38,7 @@ import ReactCarouselQuery from 'react-carousel-query';
 ```
 ### Props
 - `fetchStep`: Number of items requested in each GET call (optional, default is 3)
-- `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
+- `hideIndex`: Avoid displaying in desktop devices the index on top right corner (optional, default is false)
 - `showArrowsOnMobile`: Show arrows on mobile (optional, default is false)
 - `renderBadge`: Render the badge as you wish. (optional)
 - `renderItem`: Render each slide as you wish! You can even render more than one at once using the `getData` prop.
