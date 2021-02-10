@@ -9,7 +9,7 @@ p {
 
 @font-face {
 	font-family: 'Marvel';
-	src: url('MarvelRegular.ttf') format('truetype')
+	src: url('assets/MarvelRegular.ttf') format('truetype')
 }
 
 h1 {
