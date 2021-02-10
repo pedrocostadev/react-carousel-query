@@ -78,6 +78,4 @@ Still don't know how to use it? See the demo source code [here](https://github.c
 
 Contributions are welcome. Just open a PR and feel free to contact me :-).
 
-### ToDo
-
-- Add missing tests
+You can also start looking into ope issues, specially the ones with `good first issue` label.
