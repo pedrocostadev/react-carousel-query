@@ -102,3 +102,13 @@ Object {
   "unmount": [Function],
 }
 `;
+
+exports[`<Arrow /> It should render using custom render function 1`] = `
+<div>
+  <p
+    data-testid="left-custom-arrow"
+  >
+    left
+  </p>
+</div>
+`;

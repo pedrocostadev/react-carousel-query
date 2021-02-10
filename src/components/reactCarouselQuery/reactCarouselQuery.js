@@ -20,6 +20,7 @@ const ReactCarouselQuery = ({ getData, fetchStep, ...props }) => {
 ReactCarouselQuery.propTypes = {
   renderItem: PropTypes.func.isRequired,
   renderBadge: PropTypes.func,
+  renderArrow: PropTypes.func,
   getData: PropTypes.func.isRequired,
   fetchStep: PropTypes.number,
   hideIndex: PropTypes.bool,

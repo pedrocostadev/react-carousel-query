@@ -7,21 +7,28 @@ import Button from '@primitives/button';
 
 import styles from './arrow.module.css';
 
-const Arrow = ({ variant, showOnMobile, ...buttonProps }) => (
-  <Button
-    data-testid={`button-${variant}`}
-    {...buttonProps}
-    className={classnames(styles.arrowButton, styles[variant], {
-      [styles.showOnMobile]: showOnMobile,
-    })}
-  >
-    <IconChevron />
-  </Button>
-);
+const Arrow = ({ variant, showOnMobile, renderArrow, ...buttonProps }) => {
+  if (typeof renderArrow === 'function') {
+    return renderArrow({ variant, ...buttonProps });
+  }
+
+  return (
+    <Button
+      data-testid={`button-${variant}`}
+      {...buttonProps}
+      className={classnames(styles.arrowButton, styles[variant], {
+        [styles.showOnMobile]: showOnMobile,
+      })}
+    >
+      <IconChevron />
+    </Button>
+  );
+};
 
 Arrow.propTypes = {
   variant: PropTypes.oneOf(['left', 'right']).isRequired,
   showOnMobile: PropTypes.bool,
+  renderArrow: PropTypes.func,
 };
 
 export default React.memo(Arrow);

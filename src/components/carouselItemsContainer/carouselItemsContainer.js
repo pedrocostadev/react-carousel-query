@@ -16,6 +16,7 @@ const HALF_SECOND = 500;
 const TRANSITON_SNAP_DURATION = HALF_SECOND + 100;
 
 const CarouselItemsContainer = ({
+  renderArrow,
   renderItem,
   renderBadge,
   hideIndex,
@@ -130,6 +131,7 @@ const CarouselItemsContainer = ({
         />
       )}
       <Arrow
+        renderArrow={renderArrow}
         variant="left"
         showOnMobile={showArrowsOnMobile}
         onClick={onPrevious}
@@ -152,6 +154,7 @@ const CarouselItemsContainer = ({
         ))}
       </FlexContainer>
       <Arrow
+        renderArrow={renderArrow}
         variant="right"
         showOnMobile={showArrowsOnMobile}
         onClick={onNext}
@@ -161,6 +164,7 @@ const CarouselItemsContainer = ({
 };
 
 CarouselItemsContainer.propTypes = {
+  renderArrow: PropTypes.func,
   renderItem: PropTypes.func.isRequired,
   renderBadge: PropTypes.func,
   hideIndex: PropTypes.bool,

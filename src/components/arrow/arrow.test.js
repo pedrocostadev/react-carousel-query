@@ -10,6 +10,19 @@ describe('<Arrow />', () => {
     expect(button).toMatchSnapshot();
   });
 
+  test('It should render using custom render function', () => {
+    const getCustomArrowId = (variant) => `${variant}-custom-arrow`;
+    const renderArrow = ({ variant }) => (
+      <p data-testid={getCustomArrowId(variant)}>{variant}</p>
+    );
+
+    const { container, getByTestId } = render(
+      <Arrow variant="left" onClick={onClick} renderArrow={renderArrow} />,
+    );
+    expect(getByTestId(getCustomArrowId('left'))).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
+
   test('It should call onClick', () => {
     const { getByTestId } = render(
       <Arrow data-testid="arrow-left" variant="left" onClick={onClick} />,
