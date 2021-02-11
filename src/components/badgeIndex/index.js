@@ -1,3 +1,3 @@
-import BadgeIndex from './badgeIndex';
+import BadgeIndex from './badgeIndex'
 
-export default BadgeIndex;
+export default BadgeIndex

@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
-import FlexContainer from '@primitives/flexContainer';
-import Arrow from '@components/arrow';
-import BadgeIndex from '@components/badgeIndex';
-import useSlider from '@hooks/useSlider';
-import useRerenderOnWindowResize from '@hooks/useRerenderOnWindowResize';
+import FlexContainer from '@primitives/flexContainer'
+import Arrow from '@components/arrow'
+import BadgeIndex from '@components/badgeIndex'
+import useSlider from '@hooks/useSlider'
+import useRerenderOnWindowResize from '@hooks/useRerenderOnWindowResize'
 
-import styles from './carouselItemsContainer.module.css';
+import styles from './carouselItemsContainer.module.css'
 
 const CarouselItemsContainer = ({
   renderArrow,
@@ -21,8 +21,8 @@ const CarouselItemsContainer = ({
   previous,
   children,
 }) => {
-  useRerenderOnWindowResize();
-  const containerRef = React.useRef(null);
+  useRerenderOnWindowResize()
+  const containerRef = React.useRef(null)
 
   const { events, onNext, onPrevious, offset, transitionDuration } = useSlider({
     containerRef,
@@ -30,9 +30,9 @@ const CarouselItemsContainer = ({
     previous,
     currentIndex,
     total,
-  });
+  })
 
-  const shouldRenderArrows = showArrows || renderArrow;
+  const shouldRenderArrows = showArrows || renderArrow
 
   return (
     <>
@@ -60,12 +60,10 @@ const CarouselItemsContainer = ({
       >
         {children}
       </FlexContainer>
-      {shouldRenderArrows && (
-        <Arrow renderArrow={renderArrow} variant="right" onClick={onNext} />
-      )}
+      {shouldRenderArrows && <Arrow renderArrow={renderArrow} variant="right" onClick={onNext} />}
     </>
-  );
-};
+  )
+}
 
 CarouselItemsContainer.propTypes = {
   renderArrow: PropTypes.func,
@@ -77,6 +75,6 @@ CarouselItemsContainer.propTypes = {
   next: PropTypes.func.isRequired,
   previous: PropTypes.func.isRequired,
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
-};
+}
 
-export default CarouselItemsContainer;
+export default CarouselItemsContainer

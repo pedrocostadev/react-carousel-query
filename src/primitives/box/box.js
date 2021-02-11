@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
-import styles from './box.module.css';
+import styles from './box.module.css'
 
 const Box = React.forwardRef(
   (
@@ -18,7 +18,7 @@ const Box = React.forwardRef(
       overflowHidden,
       ...props
     },
-    ref,
+    ref
   ) => (
     <div
       {...props}
@@ -32,15 +32,15 @@ const Box = React.forwardRef(
         { [styles.fullMaxWidth]: fullMaxWidth },
         { [styles.fullMinWidth]: fullMinWidth },
         { [styles.positionRelative]: positionRelative },
-        { [styles.overflowHidden]: overflowHidden },
+        { [styles.overflowHidden]: overflowHidden }
       )}
     >
       {children}
     </div>
-  ),
-);
+  )
+)
 
-Box.displayName = 'Box';
+Box.displayName = 'Box'
 
 Box.propTypes = {
   children: PropTypes.node,
@@ -53,6 +53,6 @@ Box.propTypes = {
   fullMinWidth: PropTypes.bool,
   positionRelative: PropTypes.bool,
   overflowHidden: PropTypes.bool,
-};
+}
 
-export default Box;
+export default Box

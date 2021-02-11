@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import { render } from '@testing-library/react';
-import CarouselItemsContainer from './carouselItemsContainer';
+import React from 'react'
+import { render } from '@testing-library/react'
+import CarouselItemsContainer from './carouselItemsContainer'
 
 describe('<CarouselItemsContainer />', () => {
   const BadgeFn = ({ currentIndex, total }) => {
-    return <span>{`${currentIndex}/${total}`}</span>;
-  };
+    return <span>{`${currentIndex}/${total}`}</span>
+  }
 
   const props = {
     renderBadge: BadgeFn,
@@ -42,25 +42,29 @@ describe('<CarouselItemsContainer />', () => {
   test('It should not render the arrows by default', () => {
     const { container, queryByTestId } = renderCarouselItemsContainer(props);
 
-    const leftArrowButton = queryByTestId('arrow-button-left');
-    const rightArrowButton = queryByTestId('arrow-button-right');
+    const leftArrowButton = queryByTestId('arrow-button-left')
+    const rightArrowButton = queryByTestId('arrow-button-right')
 
-    expect(leftArrowButton).toBeFalsy();
-    expect(rightArrowButton).toBeFalsy();
-    expect(container).toMatchSnapshot();
-  });
+    expect(leftArrowButton).toBeFalsy()
+    expect(rightArrowButton).toBeFalsy()
+    expect(container).toMatchSnapshot()
+  })
 
   test('It should render the arrows when showArrows prop is true', () => {
+<<<<<<< HEAD
     const { container, getByTestId } = renderCarouselItemsContainer({
       ...props,
       showArrows: true,
     });
+=======
+    const { container, getByTestId } = render(<CarouselItemsContainer showArrows {...props} />)
+>>>>>>> chore: format code to the new rules
 
-    const leftArrowButton = getByTestId('arrow-button-left');
-    const rightArrowButton = getByTestId('arrow-button-right');
+    const leftArrowButton = getByTestId('arrow-button-left')
+    const rightArrowButton = getByTestId('arrow-button-right')
 
-    expect(leftArrowButton).toBeTruthy();
-    expect(rightArrowButton).toBeTruthy();
-    expect(container).toMatchSnapshot();
-  });
-});
+    expect(leftArrowButton).toBeTruthy()
+    expect(rightArrowButton).toBeTruthy()
+    expect(container).toMatchSnapshot()
+  })
+})

@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
 const useRerenderOnWindowResize = () => {
   // Force component to re render. We don't need the window size
   // value, just that component re renders.
-  const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+  const [, forceUpdate] = React.useReducer(x => x + 1, 0)
 
   React.useLayoutEffect(() => {
     window.addEventListener('resize', () => {
-      forceUpdate();
-    });
-    return () => window.removeEventListener('resize', forceUpdate);
-  }, []);
+      forceUpdate()
+    })
+    return () => window.removeEventListener('resize', forceUpdate)
+  }, [])
 
-  return forceUpdate;
-};
+  return forceUpdate
+}
 
-export default useRerenderOnWindowResize;
+export default useRerenderOnWindowResize

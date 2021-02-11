@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
-import IconChevron from '@icons/IconChevron';
-import Button from '@primitives/button';
+import IconChevron from '@icons/IconChevron'
+import Button from '@primitives/button'
 
-import styles from './arrow.module.css';
+import styles from './arrow.module.css'
 
 const Arrow = ({ variant, renderArrow, ...buttonProps }) => {
   if (typeof renderArrow === 'function') {
-    return renderArrow({ variant, ...buttonProps });
+    return renderArrow({ variant, ...buttonProps })
   }
 
   return (
@@ -20,13 +20,13 @@ const Arrow = ({ variant, renderArrow, ...buttonProps }) => {
     >
       <IconChevron />
     </Button>
-  );
-};
+  )
+}
 
 Arrow.propTypes = {
   variant: PropTypes.oneOf(['left', 'right']).isRequired,
   showOnMobile: PropTypes.bool,
   renderArrow: PropTypes.func,
-};
+}
 
-export default React.memo(Arrow);
+export default React.memo(Arrow)

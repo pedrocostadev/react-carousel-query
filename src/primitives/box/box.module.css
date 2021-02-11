@@ -1,27 +1,27 @@
 .fullHeight {
-    height: 100%;
+  height: 100%;
 }
 
 .fullWidth {
-    width: 100%;
+  width: 100%;
 }
 
 .fullMaxHeight {
-    max-height: 100%;
+  max-height: 100%;
 }
 
 .fullMaxWidth {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .fullMinWidth {
-    min-width: 100%;
+  min-width: 100%;
 }
 
 .positionRelative {
-    position: relative;
+  position: relative;
 }
 
 .overflowHidden {
-    overflow:hidden;
+  overflow: hidden;
 }

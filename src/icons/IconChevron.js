@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const IconChevron = ({ className }) => (
   <svg
@@ -16,10 +16,10 @@ const IconChevron = ({ className }) => (
   >
     <polyline points="1 1 3.77984472 4 6.53846154 1" />
   </svg>
-);
+)
 
 IconChevron.propTypes = {
   className: PropTypes.string,
-};
+}
 
-export default React.memo(IconChevron);
+export default React.memo(IconChevron)
