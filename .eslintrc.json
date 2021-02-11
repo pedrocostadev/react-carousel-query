@@ -1,14 +1,14 @@
 {
     "env": {
         "browser": true,
-        "node": true,
-        "es2021": true,
-        "jest/globals": true
+        "es2021": true
     },
     "extends": [
-        "eslint:recommended",
+        "standard",
         "plugin:react/recommended",
-        "plugin:prettier/recommended"
+        "plugin:jsx-a11y/recommended",
+        "plugin:prettier/recommended",
+        "prettier/react"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -19,14 +19,17 @@
     },
     "plugins": [
         "react",
-        "jest"
+        "jest",
+        "react-hooks"
     ],
     "ignorePatterns": ["./index.d.ts"],
-    "rules": {
-    },
     "settings": {
         "react": {
             "version": "detect"
         }
+    },
+    "rules": {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
     }
 }
