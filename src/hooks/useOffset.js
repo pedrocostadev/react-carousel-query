@@ -29,7 +29,7 @@ const useOffset = ({ currentIndex, itemWidth, total }) => {
   // When window size changes we need to react!
   React.useLayoutEffect(() => {
     setOffset(currentIndex * itemWidth)
-  }, [itemWidth])
+  }, [itemWidth, currentIndex])
 
   return {
     offset,

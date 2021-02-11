@@ -15,26 +15,28 @@ export const useQueryManagerProvider = ({ getData, fetchStep = DEFAULT_STEP }) =
     currentIndex: 0,
   })
 
-  const setData = data => {
-    const { offset: newOffset, items, total } = data
-    setState(currentState => ({
-      ...currentState,
-      offset: newOffset + fetchStep,
-      total,
-      items: state.items.concat(items),
-    }))
-  }
+  React.useEffect(() => {
+    const isLastItem = state.currentIndex + 1 === state.total
+    const isLastItemFetched = state.currentIndex + 1 >= state.offset
 
-  const isLastItem = state.currentIndex + 1 === state.total
-  const isLastItemFetched = state.currentIndex + 1 >= state.offset
-
-  const fetchData = async () => {
-    if (!isLastItemFetched || isLastItem) {
-      return
+    const setData = data => {
+      const { offset: newOffset, items, total } = data
+      setState(currentState => ({
+        ...currentState,
+        offset: newOffset + fetchStep,
+        total,
+        items: state.items.concat(items),
+      }))
     }
-    const data = await getData({ offset: state.offset, limit: fetchStep })
-    setData(data)
-  }
+    const fetchData = async () => {
+      if (!isLastItemFetched || isLastItem) {
+        return
+      }
+      const data = await getData({ offset: state.offset, limit: fetchStep })
+      setData(data)
+    }
+    fetchData()
+  }, [fetchStep, getData, state.offset, state.total, state.currentIndex, state.items])
 
   const setCurrentIndex = currentIndex => {
     setState(currentState => ({ ...currentState, currentIndex }))
@@ -54,10 +56,6 @@ export const useQueryManagerProvider = ({ getData, fetchStep = DEFAULT_STEP }) =
       currentIndex: state.currentIndex <= 0 ? state.currentIndex : state.currentIndex - 1,
     }))
   }
-
-  React.useEffect(() => {
-    fetchData()
-  }, [state.currentIndex])
 
   return {
     ...state,
