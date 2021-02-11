@@ -21,7 +21,7 @@
     "start": "webpack serve --mode production",
     "start:dev": "webpack serve --open --mode development",
     "lint": "eslint src --ext .js",
-    "lint:fix": "yarn run lint -- --fix",
+    "lint:fix": "yarn run lint --fix",
     "format": "prettier --write src",
     "test": "jest",
     "test:watch": "jest --watch",
