@@ -32,6 +32,8 @@ const CarouselItemsContainer = ({
     total,
   });
 
+  const shouldRenderArrows = showArrows || renderArrow;
+
   return (
     <>
       {!hideIndex && (
@@ -42,7 +44,7 @@ const CarouselItemsContainer = ({
           total={total}
         />
       )}
-      {showArrows && (
+      {shouldRenderArrows && (
         <Arrow renderArrow={renderArrow} variant="left" onClick={onPrevious} />
       )}
       <FlexContainer
@@ -58,7 +60,7 @@ const CarouselItemsContainer = ({
       >
         {children}
       </FlexContainer>
-      {showArrows && (
+      {shouldRenderArrows && (
         <Arrow renderArrow={renderArrow} variant="right" onClick={onNext} />
       )}
     </>
