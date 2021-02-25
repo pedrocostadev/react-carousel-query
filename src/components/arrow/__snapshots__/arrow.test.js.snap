@@ -7,7 +7,7 @@ Object {
     <div>
       <button
         class="arrowButton left"
-        data-testid="button-left"
+        data-testid="arrow-button-left"
       >
         <svg
           fill="none"
@@ -30,7 +30,7 @@ Object {
   "container": <div>
     <button
       class="arrowButton left"
-      data-testid="button-left"
+      data-testid="arrow-button-left"
     >
       <svg
         fill="none"

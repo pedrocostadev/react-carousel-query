@@ -47,17 +47,4 @@ describe('<Arrow />', () => {
     const arrowButton = getByTestId('arrowRight');
     expect(arrowButton.classList.contains('right')).toBe(true);
   });
-
-  test('It should have showOnMobile class when prop is passed', () => {
-    const { getByTestId } = render(
-      <Arrow
-        showOnMobile
-        data-testid="arrow-left"
-        variant="left"
-        onClick={onClick}
-      />,
-    );
-    const arrowButton = getByTestId('arrow-left');
-    expect(arrowButton.classList.contains('showOnMobile')).toBe(true);
-  });
 });

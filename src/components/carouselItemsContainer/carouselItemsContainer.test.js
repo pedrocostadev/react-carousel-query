@@ -44,4 +44,30 @@ describe('<CarouselItemsContainer />', () => {
     expect(getByText('first')).toBeTruthy();
     expect(container).toMatchSnapshot();
   });
+
+  test('It should not render the arrows by default', () => {
+    const { container, queryByTestId } = render(
+      <CarouselItemsContainer {...props} />,
+    );
+
+    const leftArrowButton = queryByTestId('arrow-button-left');
+    const rightArrowButton = queryByTestId('arrow-button-right');
+
+    expect(leftArrowButton).toBeFalsy();
+    expect(rightArrowButton).toBeFalsy();
+    expect(container).toMatchSnapshot();
+  });
+
+  test('It should render the arrows when showArrows prop is true', () => {
+    const { container, getByTestId } = render(
+      <CarouselItemsContainer showArrows {...props} />,
+    );
+
+    const leftArrowButton = getByTestId('arrow-button-left');
+    const rightArrowButton = getByTestId('arrow-button-right');
+
+    expect(leftArrowButton).toBeTruthy();
+    expect(rightArrowButton).toBeTruthy();
+    expect(container).toMatchSnapshot();
+  });
 });

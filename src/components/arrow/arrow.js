@@ -7,18 +7,16 @@ import Button from '@primitives/button';
 
 import styles from './arrow.module.css';
 
-const Arrow = ({ variant, showOnMobile, renderArrow, ...buttonProps }) => {
+const Arrow = ({ variant, renderArrow, ...buttonProps }) => {
   if (typeof renderArrow === 'function') {
     return renderArrow({ variant, ...buttonProps });
   }
 
   return (
     <Button
-      data-testid={`button-${variant}`}
+      data-testid={`arrow-button-${variant}`}
       {...buttonProps}
-      className={classnames(styles.arrowButton, styles[variant], {
-        [styles.showOnMobile]: showOnMobile,
-      })}
+      className={classnames(styles.arrowButton, styles[variant])}
     >
       <IconChevron />
     </Button>

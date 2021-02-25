@@ -20,7 +20,7 @@ const CarouselItemsContainer = ({
   renderItem,
   renderBadge,
   hideIndex,
-  showArrowsOnMobile,
+  showArrows,
 }) => {
   const containerRef = React.useRef(null);
 
@@ -157,12 +157,9 @@ const CarouselItemsContainer = ({
           total={total}
         />
       )}
-      <Arrow
-        renderArrow={renderArrow}
-        variant="left"
-        showOnMobile={showArrowsOnMobile}
-        onClick={onPrevious}
-      />
+      {showArrows && (
+        <Arrow renderArrow={renderArrow} variant="left" onClick={onPrevious} />
+      )}
       <FlexContainer
         ref={containerRef}
         fullHeight
@@ -184,12 +181,9 @@ const CarouselItemsContainer = ({
           <CarouselItem key={item.id} item={item} renderItem={renderItem} />
         ))}
       </FlexContainer>
-      <Arrow
-        renderArrow={renderArrow}
-        variant="right"
-        showOnMobile={showArrowsOnMobile}
-        onClick={onNext}
-      />
+      {showArrows && (
+        <Arrow renderArrow={renderArrow} variant="right" onClick={onNext} />
+      )}
     </>
   );
 };
@@ -199,7 +193,7 @@ CarouselItemsContainer.propTypes = {
   renderItem: PropTypes.func.isRequired,
   renderBadge: PropTypes.func,
   hideIndex: PropTypes.bool,
-  showArrowsOnMobile: PropTypes.bool,
+  showArrows: PropTypes.bool,
 };
 
 export default CarouselItemsContainer;
