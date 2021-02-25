@@ -18,11 +18,11 @@ Demo [here](https://react-carousel-query.vercel.app/)
 
 ## Props
 - `fetchStep`: Number of items requested in each GET call (optional, default is 3)
-- `hideIndex`: Avoid displaying in desktop devices the index on top right corner (optional, default is false)
-- `showArrows`: Show arrows (optional, default is false). Passing the `renderArrow` prop also make the arrows to render.
+- `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
+- `showArrows`: Show arrows (optional, default is false). Passing the `renderArrow` prop also makes the arrows to render.
 - `renderBadge`: Render the badge component as you wish. (optional)
 - `renderArrow`: Render the arrow component as you wish. (optional, see [example](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows))
-- `renderItem`: Render each slide as you wish! You can even render more than one at once using the `getData` prop.
+- `renderItem`: Render each slide as you wish!
 - `getData`: Async function that should return the fetched items. Should respect the following format:
 ```
 { offset: number; total: number; items: { id }[] }
@@ -42,13 +42,13 @@ const getData = async ({ offset, limit }) => {
 
 ## How to use
 
-- [Getting pictures from an API](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js)
+- [Check how to get the items from an API in our demo code](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js)
 
-- [Using with limited resources](https://repl.it/@pedrocostadev/react-carousel-query)
+- [Using with limited resources](https://repl.it/@pedrocostadev/react-carousel-query#src/App.js)
 
-- [Using without the query manager](https://repl.it/@pedrocostadev/react-carousel)
+- [Using without the query manager](https://repl.it/@pedrocostadev/react-carousel#src/App.js)
 
-- [Render custom arrows](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows)
+- [Render custom arrows](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows#src/App.js)
 
 
 ## Setup
