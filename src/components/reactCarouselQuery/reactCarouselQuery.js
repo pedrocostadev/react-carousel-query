@@ -2,18 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import CarouselItemsContainer from '@components/carouselItemsContainer';
-import { QueryManagerProvider } from '@hooks/useQueryManager';
-import useRerenderOnWindowResize from '@hooks/useRerenderOnWindowResize';
+import CarouselItem from '@components/carouselItem';
+import { useQueryManager } from '@hooks/useQueryManager';
 import Box from '@primitives/box';
 
-const ReactCarouselQuery = ({ getData, fetchStep, ...props }) => {
-  useRerenderOnWindowResize();
+const ReactCarouselQuery = ({ renderItem, ...props }) => {
+  const { currentIndex, total, items, next, previous } = useQueryManager();
   return (
-    <QueryManagerProvider getData={getData} fetchStep={fetchStep}>
-      <Box positionRelative overflowHidden fullWidth fullHeight>
-        <CarouselItemsContainer {...props} />
-      </Box>
-    </QueryManagerProvider>
+    <Box positionRelative overflowHidden fullWidth fullHeight>
+      <CarouselItemsContainer
+        {...props}
+        currentIndex={currentIndex}
+        total={total}
+        items={items}
+        next={next}
+        previous={previous}
+      >
+        {items.map((item) => (
+          <CarouselItem key={item.id} item={item} renderItem={renderItem} />
+        ))}
+      </CarouselItemsContainer>
+    </Box>
   );
 };
 
@@ -21,8 +30,6 @@ ReactCarouselQuery.propTypes = {
   renderItem: PropTypes.func.isRequired,
   renderBadge: PropTypes.func,
   renderArrow: PropTypes.func,
-  getData: PropTypes.func.isRequired,
-  fetchStep: PropTypes.number,
   hideIndex: PropTypes.bool,
   showArrows: PropTypes.bool,
 };

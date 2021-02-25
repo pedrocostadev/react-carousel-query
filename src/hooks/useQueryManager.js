@@ -13,7 +13,7 @@ export const useQueryManagerProvider = ({
 }) => {
   const [state, setState] = React.useState({
     offset: 0,
-    total: undefined,
+    total: 0,
     items: [],
     currentIndex: 0,
   });

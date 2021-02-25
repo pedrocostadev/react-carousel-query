@@ -6,20 +6,12 @@ exports[`<CarouselItemsContainer /> It should hide index 1`] = `
     class="container flexDisplay alignCenter fullHeight"
     style="transform: translateX(0px); transition-duration: 0s;"
   >
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        first
-      </p>
-    </div>
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        second
-      </p>
-    </div>
+    <img
+      alt="pic1"
+    />
+    <img
+      alt="pic2"
+    />
   </div>
 </div>
 `;
@@ -33,20 +25,12 @@ exports[`<CarouselItemsContainer /> It should not render the arrows by default 1
     class="container flexDisplay alignCenter fullHeight"
     style="transform: translateX(0px); transition-duration: 0s;"
   >
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        first
-      </p>
-    </div>
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        second
-      </p>
-    </div>
+    <img
+      alt="pic1"
+    />
+    <img
+      alt="pic2"
+    />
   </div>
 </div>
 `;
@@ -60,20 +44,12 @@ exports[`<CarouselItemsContainer /> It should render 1`] = `
     class="container flexDisplay alignCenter fullHeight"
     style="transform: translateX(0px); transition-duration: 0s;"
   >
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        first
-      </p>
-    </div>
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        second
-      </p>
-    </div>
+    <img
+      alt="pic1"
+    />
+    <img
+      alt="pic2"
+    />
   </div>
 </div>
 `;
@@ -107,20 +83,12 @@ exports[`<CarouselItemsContainer /> It should render the arrows when showArrows 
     class="container flexDisplay alignCenter fullHeight"
     style="transform: translateX(0px); transition-duration: 0s;"
   >
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        first
-      </p>
-    </div>
-    <div
-      class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-    >
-      <p>
-        second
-      </p>
-    </div>
+    <img
+      alt="pic1"
+    />
+    <img
+      alt="pic2"
+    />
   </div>
   <button
     class="arrowButton right"
