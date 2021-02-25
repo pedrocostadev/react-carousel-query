@@ -1,13 +1,22 @@
 import React from 'react';
 
-const useLastTouch = () => {
-  const [state, setState] = React.useState(0);
+const getLastTouchValue = ({ nativeEvent }) => {
+  if (nativeEvent.touches) {
+    return nativeEvent.touches[0].clientX;
+  }
+  return nativeEvent.clientX;
+};
 
-  const setLastTouch = (evt) => setState(evt.nativeEvent.touches[0].clientX);
+const useLastTouch = () => {
+  const [lastTouch, setState] = React.useState(0);
+
+  const setLastTouch = (evt) => setState(getLastTouchValue(evt));
 
   const resetLastTouch = () => setState(0);
 
-  return { lastTouch: state, setLastTouch, resetLastTouch };
+  const getTouchDelta = (ev) => lastTouch - getLastTouchValue(ev);
+
+  return { lastTouch, setLastTouch, resetLastTouch, getTouchDelta };
 };
 
 export default useLastTouch;

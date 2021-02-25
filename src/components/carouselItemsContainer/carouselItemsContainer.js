@@ -29,7 +29,7 @@ const CarouselItemsContainer = ({
   const resetTransitionDuration = () =>
     setTimeout(() => setTransitionDuration('0s'), TRANSITON_SNAP_DURATION);
 
-  const { lastTouch, setLastTouch, resetLastTouch } = useLastTouch();
+  const { setLastTouch, resetLastTouch, getTouchDelta } = useLastTouch();
 
   const itemWidth = containerRef.current && containerRef.current.offsetWidth;
 
@@ -101,7 +101,7 @@ const CarouselItemsContainer = ({
   };
 
   const onTouchMove = (evt) => {
-    const delta = lastTouch - evt.nativeEvent.touches[0].clientX;
+    const delta = getTouchDelta(evt);
     setLastTouch(evt);
     onMovement(delta);
   };
@@ -120,6 +120,33 @@ const CarouselItemsContainer = ({
     previous();
     decreaseOffset();
   };
+
+  const [isDragging, setIsDragging] = React.useState(false);
+
+  const onMouseDown = (evt) => {
+    setIsDragging(true);
+    onTouchStart(evt);
+  };
+
+  const onMouseUp = (evt) => {
+    setIsDragging(false);
+    onTouchEnd(evt);
+  };
+
+  const onMouseMove = (evt) => {
+    if (!isDragging) {
+      return;
+    }
+    onTouchMove(evt);
+  };
+
+  const onMouseLeave = (evt) => {
+    if (!isDragging) {
+      return;
+    }
+    onMouseUp(evt);
+  };
+
   return (
     <>
       {!hideIndex && (
@@ -140,6 +167,10 @@ const CarouselItemsContainer = ({
         ref={containerRef}
         fullHeight
         alignCenter
+        onMouseLeave={onMouseLeave}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
+        onMouseMove={onMouseMove}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
