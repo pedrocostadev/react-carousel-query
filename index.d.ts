@@ -11,7 +11,7 @@ declare module 'react-carousel-query' {
       renderBadge?: () => React.ReactElement;
       fetchStep?: number;
       hideIndex?: boolean;
-      showArrowsOnMobile?: boolean;
+      showArrows?: boolean;
     }
   
     const ReactCarouselQuery: React.FC<ReactCarouselQueryProps>;
