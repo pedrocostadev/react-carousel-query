@@ -1,1 +1,1 @@
-export const callTimes = (times, fn) => [...Array(5).keys()].forEach(fn);
+export const callTimes = (times, fn) => [...Array(5).keys()].forEach(fn)

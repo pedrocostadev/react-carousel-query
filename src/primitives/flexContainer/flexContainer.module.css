@@ -1,15 +1,15 @@
 .flexDisplay {
-	display: flex;
+  display: flex;
 }
 
 .alignCenter {
-	align-items: center;
+  align-items: center;
 }
 
 .justifyCenter {
-	justify-content: center;
+  justify-content: center;
 }
 
 .directionColumn {
-	flex-direction: column;
+  flex-direction: column;
 }

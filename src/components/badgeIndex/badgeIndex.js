@@ -1,32 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
-import styles from './badgeIndex.module.css';
+import styles from './badgeIndex.module.css'
 
-const ELEVEN_SECONDS = 11000;
+const ELEVEN_SECONDS = 11000
 
-const BadgeIndex = ({
-  currentIndex,
-  total,
-  renderBadge,
-  className,
-  ...props
-}) => {
-  if (typeof renderBadge === 'function') {
-    return renderBadge({ currentIndex, total });
-  }
+const BadgeIndex = ({ currentIndex, total, renderBadge, className, ...props }) => {
+  const [showAnimation, setShowAnimation] = React.useState(false)
 
-  const [showAnimation, setShowAnimation] = React.useState(false);
-
-  const hideAnimation = () =>
-    setTimeout(() => setShowAnimation(false), ELEVEN_SECONDS);
-
+  const hideAnimation = () => setTimeout(() => setShowAnimation(false), ELEVEN_SECONDS)
   React.useLayoutEffect(() => {
-    setShowAnimation(true);
-    const timeout = hideAnimation();
-    return () => clearTimeout(timeout);
-  }, [currentIndex, total]);
+    setShowAnimation(true)
+
+    const timeout = hideAnimation()
+    return () => clearTimeout(timeout)
+  }, [currentIndex, total])
+
+  if (typeof renderBadge === 'function') {
+    return renderBadge({ currentIndex, total })
+  }
 
   return (
     <span
@@ -34,20 +27,20 @@ const BadgeIndex = ({
       className={classnames(
         styles.badgeIndex,
         { [styles.fadeInFadeOut]: showAnimation },
-        className,
+        className
       )}
     >
       {currentIndex}
       {total ? `/${total}` : ''}
     </span>
-  );
-};
+  )
+}
 
 BadgeIndex.propTypes = {
   currentIndex: PropTypes.number.isRequired,
   total: PropTypes.number,
   className: PropTypes.string,
   renderBadge: PropTypes.func,
-};
+}
 
-export default React.memo(BadgeIndex);
+export default React.memo(BadgeIndex)

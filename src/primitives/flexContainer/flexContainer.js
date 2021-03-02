@@ -1,16 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classnames from 'classnames'
 
-import Box from '@primitives/box';
+import Box from '@primitives/box'
 
-import styles from './flexContainer.module.css';
+import styles from './flexContainer.module.css'
 
 const FlexContainer = React.forwardRef(
-  (
-    { children, alignCenter, justifyCenter, directionColumn, ...props },
-    ref,
-  ) => {
+  ({ children, alignCenter, justifyCenter, directionColumn, ...props }, ref) => {
     return (
       <Box
         {...props}
@@ -19,16 +16,16 @@ const FlexContainer = React.forwardRef(
           styles.flexDisplay,
           { [styles.alignCenter]: alignCenter },
           { [styles.justifyCenter]: justifyCenter },
-          { [styles.directionColumn]: directionColumn },
+          { [styles.directionColumn]: directionColumn }
         )}
       >
         {children}
       </Box>
-    );
-  },
-);
+    )
+  }
+)
 
-FlexContainer.displayName = 'FlexContainer';
+FlexContainer.displayName = 'FlexContainer'
 
 FlexContainer.propTypes = {
   children: PropTypes.node,
@@ -36,6 +33,6 @@ FlexContainer.propTypes = {
   alignCenter: PropTypes.bool,
   justifyCenter: PropTypes.bool,
   directionColumn: PropTypes.bool,
-};
+}
 
-export default FlexContainer;
+export default FlexContainer

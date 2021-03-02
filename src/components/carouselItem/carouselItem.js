@@ -1,18 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Box from '@primitives/box';
+import Box from '@primitives/box'
 
 const CarouselItem = ({ item, renderItem, children }) => (
   <Box fullMaxHeight fullHeight fullWidth fullMinWidth>
-    {children ? children : renderItem({ item })}
+    {children || renderItem({ item })}
   </Box>
-);
+)
 
 CarouselItem.propTypes = {
   item: PropTypes.object,
   renderItem: PropTypes.func,
   children: PropTypes.node,
-};
+}
 
-export default React.memo(CarouselItem);
+export default React.memo(CarouselItem)
