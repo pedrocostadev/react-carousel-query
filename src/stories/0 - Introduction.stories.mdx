@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Docs/0 - Introduction" />
+
+# ReactCarouselQuery
+
+[![NPM](https://nodei.co/npm/react-carousel-query.png)](https://npmjs.org/package/react-carousel-query)
+
+## Overview
+
+A **Infinite Carousel** Component made with React. It handles the pagination requests for you and is dependencies-free.
+Check the demo [here](https://react-carousel-query.vercel.app/).
+
+
+## Quick Features
+
+- Developed to be used as a Infinite Carousel but can be used also with limited resources
+- Handles the pagination requests for you
+- Dependencies free (only React)
+- Allow you to render slides as you wish
+- Ensures a good performance
+- Prepared for mobile and desktop
+- TypeScript declarations included
+- Customizable
+
+## How to import
+
+```jsx
+import ReactCarouselQuery from "react-carousel-query";
+```
+
+## Props
+
+- `renderItem`*: Render each slide as you wish!
+- `getData`*: Async function that should return the fetched items. Should respect the following format: `{ offset: number; total: number; items: { id }[] }`
+- `fetchStep`: Number of items requested in each GET call (optional, default is 3)
+- `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
+- `showArrows`: Show arrows (optional, default is false). Passing the `renderArrow` prop also makes the arrows to render.
+- `renderBadge`: Render the badge component as you wish. (optional)
+- `renderArrow`: Render the arrow component as you wish. (optional)

@@ -1,0 +1,69 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import { ReactCarousel } from '../'
+
+<Meta title="Docs/4 - No Query Manager" component={ReactCarousel} />
+
+# Using without the query manager
+
+<Canvas>
+  <Story name="Basic">
+    {args => {
+      const pictures = [
+        'https://media.istockphoto.com/photos/digital-earth-5g-ai-technology-picture-id1132986308',
+        'https://media.istockphoto.com/photos/programming-code-abstract-technology-background-of-software-developer-picture-id1026914886?s=612x612',
+        'https://images.pexels.com/photos/4160089/pexels-photo-4160089.jpeg?auto=compress',
+      ]
+      const SomeImg = ({ src }) => (
+        <img
+          alt="example"
+          draggable={false}
+          style={{
+            display: 'block',
+            objectFit: 'cover',
+            height: '100%',
+            width: '100%',
+          }}
+          src={src}
+        />
+      )
+      return (
+        <ReactCarousel>
+          {pictures.map((imgStr, index) => (
+            <SomeImg key={index} src={imgStr} />
+          ))}
+        </ReactCarousel>
+      )
+    }}
+  </Story>
+</Canvas>
+
+### Code
+
+```jsx
+
+import { ReactCarousel } from "react-carousel-query";
+
+const RANDOM_PICS = [
+  'https://media.istockphoto.com/photos/digital-earth-5g-ai-technology-picture-id1132986308',
+  'https://media.istockphoto.com/photos/programming-code-abstract-technology-background-of-software-developer-picture-id1026914886',
+  'https://images.pexels.com/photos/4160089/pexels-photo-4160089.jpeg?auto=compress'
+];
+
+const Img = ({ src }) => (
+  <img
+    alt="example"
+    draggable={false}
+    style={{
+      display: 'block',
+      objectFit: 'cover',
+      height: '100%',
+      width: '100%',
+    }}
+    src={src}
+  />
+)
+
+<ReactCarousel>
+    {pictures.map((imgStr, index) => <Img key={index} src={imgStr} />)}
+</ReactCarousel>
+```
