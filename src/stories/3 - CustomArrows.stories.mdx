@@ -1,0 +1,93 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks'
+import ReactCarouselQuery from '../'
+
+<Meta title="Docs/3 - Custom arrows" component={ReactCarouselQuery} />
+
+# Custom arrows
+
+<Canvas>
+  <Story name="Basic">
+    {(args) => {
+      const pictures = [
+        'https://media.istockphoto.com/photos/digital-earth-5g-ai-technology-picture-id1132986308',
+        'https://media.istockphoto.com/photos/programming-code-abstract-technology-background-of-software-developer-picture-id1026914886?s=612x612',
+        'https://images.pexels.com/photos/4160089/pexels-photo-4160089.jpeg?auto=compress'
+      ];
+      const getData = async ({ offset, limit }) =>
+        ({ items: pictures.map((picSrc, index) => ({ id: index, picSrc, name: `pic ${index}` })), offset: 3, limit: 3, total: 3 });
+      const renderItem = ({ item }) => (
+        <img
+          draggable={false}
+          style={{ height: "100%", width: '100%', objectFit: 'cover' }}
+          alt={item.name}
+          src={item.picSrc}
+        />
+      )
+      const renderArrow= ({ variant, onClick}) => (
+        <button
+            onClick={onClick}
+            style={{
+                height: 40,
+                backgroundColor: 'white',
+                position: 'absolute',
+                top: '50%',
+                bottom: 0,
+                zIndex: 1,
+                transform: 'translateY(-50%)',
+                [variant]: '1px'
+            }}
+        >
+            {variant}
+        </button>
+      )
+      return <ReactCarouselQuery renderItem={renderItem} getData={getData} renderArrow={renderArrow} />
+    }}
+   </Story>
+</Canvas>
+
+### Code
+
+```jsx
+
+const RANDOM_PICS = [
+  'https://media.istockphoto.com/photos/digital-earth-5g-ai-technology-picture-id1132986308',
+  'https://media.istockphoto.com/photos/programming-code-abstract-technology-background-of-software-developer-picture-id1026914886',
+  'https://images.pexels.com/photos/4160089/pexels-photo-4160089.jpeg?auto=compress'
+];
+
+<ReactCarouselQuery
+  renderItem={({ item }) => (
+    <img
+      draggable={false}
+      style={{ height: "100%", width: '100%', objectFit: 'cover' }}
+      alt={item.name}
+      src={item.picSrc}
+    />
+  )}
+  getData={async ({ offset, limit }) => {
+    return {
+      items: RANDOM_PICS.map((picSrc, index) => ({ id: index, picSrc, name: `pic ${index}` })),
+      offset: 3,
+      limit: 3,
+      total: 3
+    });
+  }}
+  renderArrow={({ variant, onClick}) => (
+    <button
+        onClick={onClick}
+        style={{
+            height: 40,
+            backgroundColor: 'white',
+            position: 'absolute',
+            top: '50%',
+            bottom: 0,
+            zIndex: 1,
+            transform: 'translateY(-50%)',
+            [variant]: '1px'
+        }}
+    >
+        {variant}
+    </button>
+  )}}
+/>
+```

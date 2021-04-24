@@ -1,16 +1,16 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import ReactCarouselQuery from '../'
 
-<Meta title="Examples/InfiniteCarousel" component={ReactCarouselQuery} />
+<Meta title="Docs/1 - Basic Example" component={ReactCarouselQuery} />
 
-# Infinite Carousel
+# Basic example
 
 <Canvas>
   <Story name="Basic">
     {(args) => {
       const getUrl = (offset, limit) => {
         const BASE_URL = 'https://gateway.marvel.com/v1/public/characters?'
-        const apikey = `apikey=6f8dd93444b9ab8e3be7f6812d373b00`
+        const apikey = process.env.MARVEL_API_KEY
         const params = `&offset=${offset}&limit=${limit}`
         return `${BASE_URL}${apikey}${params}`
       }
@@ -55,58 +55,42 @@ import ReactCarouselQuery from '../'
    </Story>
 </Canvas>
 
-### What is?
-ReactCarouselQuery is a Infinite Carousel Component made with React. It handles the pagination requests for you and is dependencies free.
-
-### How to import
-
-```jsx
-import ReactCarouselQuery from "react-carousel-query";
-```
 
 ### How to use
 
 ```jsx
-<ReactCarouselQuery renderItem={renderItem} getData={getData} />
-```
-
-
-### Props
-
-#### renderItem
-Render each slide as you wish!
-
-```jsx
-const renderItem = ({ name, description, imgSrc }) => (
-  <div style={{ height: '100%' }}>
-    <img
-      src={imgSrc}
-      draggable={false}
-      alt={name}
-      style={{
-        display: 'block',
-        objectFit: 'cover',
-        height: '80%',
-        width: '100%',
-        background: '#ffffff url("/assets/iconLoading.svg") no-repeat center',
-      }}
-    />
-    <div style={{ height: '20%', backgroundColor: 'white', color: '#151515' }}>
-      <h3>{name}</h3>
-        <p className="line-clamp">{description || 'Description not available'}</p>
+<ReactCarouselQuery
+  renderItem={({ name, description, imgSrc }) => (
+    <div style={{ height: '100%' }}>
+      <img
+        src={imgSrc}
+        draggable={false}
+        alt={name}
+        style={{
+          display: 'block',
+          objectFit: 'cover',
+          height: '80%',
+          width: '100%',
+          background: '#ffffff url("/assets/iconLoading.svg") no-repeat center',
+        }}
+      />
+      <div style={{ height: '20%', backgroundColor: 'white', color: '#151515' }}>
+        <h3>{name}</h3>
+          <p className="line-clamp">{description || 'Description not available'}</p>
+      </div>
     </div>
-  </div>
-)
+  )}
+  getData={async ({ currentOffset, limit }) => {
+    const { data: { offset, total, items } } = await (await fetch('http://someApi.com')).json()
+    return { offset, total, items }
+  }}
+/>
 ```
 
-#### getData
-This should be an async function that returns the items info like the pictures sources to be fetched.
-Should respect the following format: `{ offset: number; total: number; items: { id, imgSrc }[] }`
 
-```jsx
-const getData = async ({ currentOffset, limit }) => {
-  const { data: { offset, total, items } } = await (await fetch('http://someApi.com')).json()
-  return { offset, total, items }
-}
-```
+### The mandatory props
+
+- renderItem: Render each slide as you wish!
+- getData: This should be an async function that returns the items info like the pictures sources to be fetched.
+Should respect the following format: `{ offset: number; total: number; items: { id }[] }`
 
