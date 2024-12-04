@@ -1,6 +1,6 @@
 {
   "name": "react-carousel-query",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "A infinite carousel component made with react that handles the pagination for you.",
   "keywords": [
     "React",
@@ -19,7 +19,7 @@
     "build:dev": "webpack --mode development",
     "build:component": "babel src -d dist --copy-files",
     "start": "webpack serve --mode production",
-    "start:dev": "webpack serve --open --mode development",
+    "start:dev": "webpack serve --mode development",
     "lint": "eslint src --ext .js",
     "lint:fix": "yarn run lint --fix",
     "format": "prettier --write src",
@@ -44,7 +44,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
     "copy-webpack-plugin": "^7.0.0",
-    "css-loader": "^5.0.1",
+    "css-loader": "^5.2.7",
     "dotenv-webpack": "^6.0.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
@@ -57,26 +57,27 @@
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "html-webpack-plugin": "^4.5.1",
+    "html-webpack-plugin": "^5.6.3",
     "husky": "^4.3.8",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "storybook-css-modules-preset": "^1.0.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "storybook-css-modules-preset": "^1.1.1",
     "style-loader": "^2.0.0",
-    "webpack": "^5.17.0",
-    "webpack-cli": "^4.4.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack": "^5.97.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0",
+    "@storybook/addon-postcss": "^2.0.0"
   },
   "dependencies": {
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "husky": {
     "hooks": {
@@ -84,6 +85,6 @@
     }
   },
   "engines": {
-    "node": "14.x.x"
+    "node": "20.x.x"
   }
 }

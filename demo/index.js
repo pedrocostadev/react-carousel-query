@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 import ReactCarouselQuery from '../src'
 
@@ -48,8 +48,7 @@ const renderItem = ({ item }) => {
     </div>
   )
 }
+const container = document.getElementById('root')
+const root = createRoot(container)
 
-render(
-  <ReactCarouselQuery fetchStep={3} renderItem={renderItem} getData={getData} />,
-  document.getElementById('root')
-)
+root.render(<ReactCarouselQuery fetchStep={3} renderItem={renderItem} getData={getData} />)
