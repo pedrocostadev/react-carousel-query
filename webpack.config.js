@@ -1,17 +1,18 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Dotenv = require('dotenv-webpack');
-const CopyPlugin = require('copy-webpack-plugin');
-const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Dotenv = require('dotenv-webpack')
+const CopyPlugin = require('copy-webpack-plugin')
+const path = require('path')
 
 module.exports = {
   entry: { index: path.resolve(__dirname, 'demo', 'index.js') },
   output: {
     path: path.resolve(__dirname, 'public'),
   },
-  devtool: 'source-map',
-  experiments: {
-    asset: true,
+  performance: {
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
   },
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -66,4 +67,4 @@ module.exports = {
       '@utils': path.resolve(__dirname, 'src/utils/'),
     },
   },
-};
+}
