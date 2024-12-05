@@ -28,13 +28,17 @@
     "test:coverage": "jest --collect-coverage",
     "prepublishOnly": "yarn run build:component",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky",
+    "cm": "cz"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
@@ -43,8 +47,10 @@
     "@testing-library/react-hooks": "^5.0.3",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
+    "commitizen": "^4.3.1",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.2.7",
+    "cz-conventional-changelog": "^3.3.0",
     "dotenv-webpack": "^6.0.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
@@ -58,13 +64,15 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "html-webpack-plugin": "^5.6.3",
-    "husky": "^4.3.8",
+    "husky": "^9.1.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "lint-staged": "^15.2.10",
     "prettier": "^2.2.1",
     "prop-types": "^15.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "semantic-release": "^24.1.2",
     "storybook-css-modules-preset": "^1.1.1",
     "style-loader": "^2.0.0",
     "webpack": "^5.97.0",
@@ -79,12 +87,16 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint && yarn test"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "engines": {
     "node": "20.x.x"
-  }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --fix"
+  },
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
