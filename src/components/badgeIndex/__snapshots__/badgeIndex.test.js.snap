@@ -17,7 +17,6 @@ exports[`<BadgeIndex /> It should render only current index where there is no to
     class="badgeIndex fadeInFadeOut"
   >
     222
-    
   </span>
 </div>
 `;
