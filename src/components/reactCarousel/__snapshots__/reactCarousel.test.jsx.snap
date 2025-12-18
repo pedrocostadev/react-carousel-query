@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ReactCarousel /> > should match snapshot 1`] = `
+<div>
+  <div
+    class="container fullHeight fullWidth positionRelative overflowHidden"
+  >
+    <span
+      data-testid="badge"
+    >
+      1/3
+    </span>
+    <div
+      class="container flexDisplay alignCenter fullHeight"
+      style="transform: translateX(0px); transition-duration: 0s;"
+    >
+      <div
+        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+      >
+        <div
+          data-testid="slide-1"
+        >
+          Slide 1
+        </div>
+      </div>
+      <div
+        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+      >
+        <div
+          data-testid="slide-2"
+        >
+          Slide 2
+        </div>
+      </div>
+      <div
+        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+      >
+        <div
+          data-testid="slide-3"
+        >
+          Slide 3
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

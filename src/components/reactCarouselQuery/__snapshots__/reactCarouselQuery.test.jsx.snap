@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<ReactCarouselQuery /> > should match snapshot 1`] = `
+<div>
+  <div
+    class="container fullHeight fullWidth positionRelative overflowHidden"
+  >
+    <span
+      class="badgeIndex fadeInFadeOut badgeIndex"
+    >
+      1
+      /3
+    </span>
+    <div
+      class="container flexDisplay alignCenter fullHeight"
+      style="transform: translateX(0px); transition-duration: 0s;"
+    >
+      <div
+        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+      >
+        <div
+          data-testid="item-1"
+        >
+          Item 1
+        </div>
+      </div>
+      <div
+        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+      >
+        <div
+          data-testid="item-2"
+        >
+          Item 2
+        </div>
+      </div>
+      <div
+        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+      >
+        <div
+          data-testid="item-3"
+        >
+          Item 3
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
