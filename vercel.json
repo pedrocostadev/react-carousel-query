@@ -1,0 +1,5 @@
+{
+    "buildCommand": "npm run build && npm run build:demo",
+    "outputDirectory": "demo/dist",
+    "installCommand": "npm install && npm --prefix demo install"
+}
