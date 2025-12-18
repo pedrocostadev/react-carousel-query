@@ -57,15 +57,15 @@ For a complete working example, check out our [demo code](https://github.com/ped
 
 ## Props
 
-| Prop          | Type       | Default      | Description                                                                                                                        |
-| ------------- | ---------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument.                                                                   |
-| `getData`     | `function` | **required** | Async function to fetch items. Must return `{ offset, total, items }`.                                                             |
-| `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call.                                                                                          |
-| `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                                      |
-| `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                               |
-| `renderArrow` | `function` | `undefined`  | Custom render function for arrows. See [custom arrows example](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows). |
-| `renderBadge` | `function` | `undefined`  | Custom render function for the index badge.                                                                                        |
+| Prop          | Type       | Default      | Description                                                                                                                |
+| ------------- | ---------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument. You can render just an img or any other React element.    |
+| `getData`     | `function` | **required** | Async function to fetch items. Must return `{ offset, total, items }`.                                                     |
+| `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call. Data is fetched preemptively as the user navigates, ensuring smooth transitions. |
+| `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                              |
+| `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                       |
+| `renderArrow` | `function` | `undefined`  | Custom render function for arrows.                                                                                         |
+| `renderBadge` | `function` | `undefined`  | Custom render function for the index badge.                                                                                |
 
 ### getData Response Format
 
