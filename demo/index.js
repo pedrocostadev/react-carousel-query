@@ -1,7 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-
-import ReactCarouselQuery from '../src'
+import ReactCarouselQuery from 'react-carousel-query'
+import 'react-carousel-query/styles.css'
 
 const getUrl = (offset, limit) => {
   const BASE_URL = 'https://gateway.marvel.com/v1/public/characters?'

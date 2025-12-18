@@ -17,7 +17,7 @@
 - Touch and mouse swipe support for mobile and desktop
 - TypeScript declarations included
 
-Demo [here](https://react-carousel-query.vercel.app/)
+Working demo [here](https://react-carousel-query.vercel.app/)
 
 ![Screenshot](./screenshots/demo.gif)
 
@@ -35,6 +35,16 @@ npm install react-carousel-query
 import ReactCarouselQuery from 'react-carousel-query'
 import 'react-carousel-query/styles.css' // Required for styles
 
+const getData = async ({ offset, limit }) => {
+  const response = await fetch(`https://api.example.com/items?offset=${offset}&limit=${limit}`)
+  const { data } = await response.json()
+  return {
+    offset: data.offset,
+    total: data.total,
+    items: data.results.map(item => ({ ...item, id: item.name })),
+  }
+}
+
 const App = () => (
   <ReactCarouselQuery
     renderItem={({ item }) => <img src={item.imgSrc} alt={item.name} />}
@@ -43,41 +53,31 @@ const App = () => (
 )
 ```
 
+For a complete working example, check out our [demo code](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js).
+
 ## Props
 
-- `fetchStep`: Number of items requested in each GET call (optional, default is 3)
-- `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
-- `showArrows`: Show arrows (optional, default is false). Passing the `renderArrow` prop also makes the arrows to render.
-- `renderBadge`: Render the badge component as you wish. (optional)
-- `renderArrow`: Render the arrow component as you wish. (optional, see [example](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows))
-- `renderItem`: Render each slide as you wish!
-- `getData`: Async function that should return the fetched items. Should respect the following format:
+| Prop          | Type       | Default      | Description                                                                                                                        |
+| ------------- | ---------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument.                                                                   |
+| `getData`     | `function` | **required** | Async function to fetch items. Must return `{ offset, total, items }`.                                                             |
+| `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call.                                                                                          |
+| `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                                      |
+| `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                               |
+| `renderArrow` | `function` | `undefined`  | Custom render function for arrows. See [custom arrows example](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows). |
+| `renderBadge` | `function` | `undefined`  | Custom render function for the index badge.                                                                                        |
 
+### getData Response Format
+
+The `getData` function receives `{ offset, limit }` and must return an object with:
+
+```ts
+{
+  offset: number   // Current offset position
+  total: number    // Total number of items available
+  items: Array<{ id: string | number, ...rest }>  // Array of items (each must have a unique id)
+}
 ```
-{ offset: number; total: number; items: { id }[] }
-```
-
-```
-const getData = async ({ offset, limit }) => {
-  const url = `http://someApi.com?offset=${offset}&limit=${limit}`;
-  const { data } = await (await fetch(url)).json();
-  return {
-    offset: data.offset,
-    total,
-    items: data.results.map(item => ({...item, id: item.name })),
-  };
-};
-```
-
-## How to use
-
-- [Check how to get the items from an API in our demo code](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js)
-
-- [Using with limited resources](https://repl.it/@pedrocostadev/react-carousel-query#src/App.js)
-
-- [Using without the query manager](https://repl.it/@pedrocostadev/react-carousel#src/App.js)
-
-- [Render custom arrows](https://repl.it/@pedrocostadev/react-carousel-query-custom-arrows#src/App.js)
 
 ## Setup
 
