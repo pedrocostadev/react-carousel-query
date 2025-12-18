@@ -4,6 +4,10 @@
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-Supported-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
+| Statements                                                                                      | Branches                                                                                      | Functions                                                                                      | Lines                                                                                      |
+| ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| ![Statements](https://img.shields.io/badge/Coverage-98.58%25-brightgreen.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-97.29%25-brightgreen.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-95.23%25-brightgreen.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-98.58%25-brightgreen.svg 'Make me better!') |
+
 - React Component
 - Developed to be used as a Infinite Carousel but can be used also with limited resources
 - Handles the pagination requests for you
