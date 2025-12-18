@@ -8,15 +8,21 @@ const getLastTouchValue = ({ nativeEvent }) => {
 }
 
 const useLastTouch = () => {
-  const [lastTouch, setState] = React.useState(0)
+  const lastTouchRef = React.useRef(0)
+  const [, forceUpdate] = React.useReducer(x => x + 1, 0)
 
-  const setLastTouch = evt => setState(getLastTouchValue(evt))
+  const setLastTouch = React.useCallback(evt => {
+    lastTouchRef.current = getLastTouchValue(evt)
+    forceUpdate()
+  }, [])
 
-  const resetLastTouch = () => setState(0)
+  const resetLastTouch = React.useCallback(() => {
+    lastTouchRef.current = 0
+  }, [])
 
-  const getTouchDelta = ev => lastTouch - getLastTouchValue(ev)
+  const getTouchDelta = React.useCallback(ev => lastTouchRef.current - getLastTouchValue(ev), [])
 
-  return { lastTouch, setLastTouch, resetLastTouch, getTouchDelta }
+  return { lastTouch: lastTouchRef.current, setLastTouch, resetLastTouch, getTouchDelta }
 }
 
 export default useLastTouch

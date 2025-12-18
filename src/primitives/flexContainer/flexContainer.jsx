@@ -35,4 +35,4 @@ FlexContainer.propTypes = {
   directionColumn: PropTypes.bool,
 }
 
-export default FlexContainer
+export default React.memo(FlexContainer)

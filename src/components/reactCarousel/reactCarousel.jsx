@@ -7,8 +7,8 @@ import Box from '@primitives/box'
 
 const ReactCarousel = ({ children, ...props }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0)
-  const next = () => setCurrentIndex(currentIndex => currentIndex + 1)
-  const previous = () => setCurrentIndex(currentIndex => currentIndex - 1)
+  const next = React.useCallback(() => setCurrentIndex(currentIndex => currentIndex + 1), [])
+  const previous = React.useCallback(() => setCurrentIndex(currentIndex => currentIndex - 1), [])
   const total = children.length
   return (
     <Box positionRelative overflowHidden fullWidth fullHeight>

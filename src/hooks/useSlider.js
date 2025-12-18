@@ -27,28 +27,33 @@ const useSlider = ({ containerRef, next, previous, currentIndex, total }) => {
 
   const [transitionDuration, setTransitionDuration] = React.useState('0s')
 
-  const resetTransitionDuration = () =>
-    setTimeout(() => setTransitionDuration('0s'), TRANSITON_SNAP_DURATION)
+  const resetTransitionDuration = React.useCallback(
+    () => setTimeout(() => setTransitionDuration('0s'), TRANSITON_SNAP_DURATION),
+    []
+  )
 
-  const onMovement = delta => {
-    setOffset(currentOffset => {
-      const nextOffset = currentOffset + delta
-      const isNegativeOffset = nextOffset < 0
-      const isInvalidOffset = nextOffset > maxOffset
+  const onMovement = React.useCallback(
+    delta => {
+      setOffset(currentOffset => {
+        const nextOffset = currentOffset + delta
+        const isNegativeOffset = nextOffset < 0
+        const isInvalidOffset = nextOffset > maxOffset
 
-      if (isNegativeOffset) {
-        return 0
-      }
+        if (isNegativeOffset) {
+          return 0
+        }
 
-      if (isInvalidOffset) {
-        return maxOffset
-      }
+        if (isInvalidOffset) {
+          return maxOffset
+        }
 
-      return nextOffset
-    })
-  }
+        return nextOffset
+      })
+    },
+    [maxOffset, setOffset]
+  )
 
-  const onMovementEnd = () => {
+  const onMovementEnd = React.useCallback(() => {
     const endPosition = offset / itemWidth
     const endPartial = endPosition % 1
 
@@ -76,63 +81,89 @@ const useSlider = ({ containerRef, next, previous, currentIndex, total }) => {
 
     setOffset(() => currentIndex * itemWidth)
     resetTransitionDuration()
-  }
+  }, [
+    offset,
+    itemWidth,
+    currentIndex,
+    setNextOffset,
+    next,
+    resetTransitionDuration,
+    setPreviousOffset,
+    previous,
+    setOffset,
+  ])
 
-  const onTouchStart = evt => {
-    setLastTouch(evt)
-  }
+  const onTouchStart = React.useCallback(
+    evt => {
+      setLastTouch(evt)
+    },
+    [setLastTouch]
+  )
 
-  const onTouchMove = evt => {
-    const delta = getTouchDelta(evt)
-    setLastTouch(evt)
-    onMovement(delta)
-  }
+  const onTouchMove = React.useCallback(
+    evt => {
+      const delta = getTouchDelta(evt)
+      setLastTouch(evt)
+      onMovement(delta)
+    },
+    [getTouchDelta, setLastTouch, onMovement]
+  )
 
-  const onTouchEnd = () => {
+  const onTouchEnd = React.useCallback(() => {
     onMovementEnd()
     resetLastTouch()
-  }
+  }, [onMovementEnd, resetLastTouch])
 
-  const onNext = () => {
+  const onNext = React.useCallback(() => {
     next()
     increaseOffset()
-  }
+  }, [next, increaseOffset])
 
-  const onPrevious = () => {
+  const onPrevious = React.useCallback(() => {
     previous()
     decreaseOffset()
-  }
+  }, [previous, decreaseOffset])
 
   const [isDragging, setIsDragging] = React.useState(false)
 
-  const onMouseDown = evt => {
-    setIsDragging(true)
-    onTouchStart(evt)
-  }
+  const onMouseDown = React.useCallback(
+    evt => {
+      setIsDragging(true)
+      onTouchStart(evt)
+    },
+    [onTouchStart]
+  )
 
-  const onMouseUp = evt => {
-    setIsDragging(false)
-    onTouchEnd(evt)
-  }
+  const onMouseUp = React.useCallback(
+    evt => {
+      setIsDragging(false)
+      onTouchEnd(evt)
+    },
+    [onTouchEnd]
+  )
 
-  const onMouseMove = evt => {
-    if (!isDragging) {
-      return
-    }
-    onTouchMove(evt)
-  }
+  const onMouseMove = React.useCallback(
+    evt => {
+      if (!isDragging) {
+        return
+      }
+      onTouchMove(evt)
+    },
+    [isDragging, onTouchMove]
+  )
 
-  const onMouseLeave = evt => {
-    if (!isDragging) {
-      return
-    }
-    onMouseUp(evt)
-  }
+  const onMouseLeave = React.useCallback(
+    evt => {
+      if (!isDragging) {
+        return
+      }
+      onMouseUp(evt)
+    },
+    [isDragging, onMouseUp]
+  )
 
-  return {
-    transitionDuration,
-    offset,
-    events: {
+  const events = React.useMemo(
+    () => ({
       onMouseLeave,
       onMouseMove,
       onMouseDown,
@@ -140,10 +171,20 @@ const useSlider = ({ containerRef, next, previous, currentIndex, total }) => {
       onTouchEnd,
       onTouchMove,
       onTouchStart,
-    },
-    onNext,
-    onPrevious,
-  }
+    }),
+    [onMouseLeave, onMouseMove, onMouseDown, onMouseUp, onTouchEnd, onTouchMove, onTouchStart]
+  )
+
+  return React.useMemo(
+    () => ({
+      transitionDuration,
+      offset,
+      events,
+      onNext,
+      onPrevious,
+    }),
+    [transitionDuration, offset, events, onNext, onPrevious]
+  )
 }
 
 export default useSlider

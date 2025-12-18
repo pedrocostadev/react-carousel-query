@@ -34,6 +34,14 @@ const CarouselItemsContainer = ({
 
   const shouldRenderArrows = showArrows || renderArrow
 
+  const containerStyle = React.useMemo(
+    () => ({
+      transform: `translateX(${offset * -1}px)`,
+      transitionDuration,
+    }),
+    [offset, transitionDuration]
+  )
+
   return (
     <>
       {!hideIndex && (
@@ -53,10 +61,7 @@ const CarouselItemsContainer = ({
         fullHeight
         alignCenter
         className={styles.container}
-        style={{
-          transform: `translateX(${offset * -1}px)`,
-          transitionDuration,
-        }}
+        style={containerStyle}
       >
         {children}
       </FlexContainer>

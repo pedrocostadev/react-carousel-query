@@ -55,4 +55,4 @@ Box.propTypes = {
   overflowHidden: PropTypes.bool,
 }
 
-export default Box
+export default React.memo(Box)

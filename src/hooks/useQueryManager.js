@@ -37,29 +37,35 @@ export const useQueryManagerProvider = ({ getData, fetchStep = DEFAULT_STEP }) =
     fetchData()
   }, [fetchStep, getData, state.offset, state.total, state.currentIndex, state.items])
 
-  const setCurrentIndex = currentIndex => {
+  const setCurrentIndex = React.useCallback(currentIndex => {
     setState(currentState => ({ ...currentState, currentIndex }))
-  }
+  }, [])
 
-  const next = () => {
+  const next = React.useCallback(() => {
     setState(currentState => ({
       ...currentState,
       currentIndex:
-        state.currentIndex + 1 === state.total ? state.currentIndex : state.currentIndex + 1,
+        currentState.currentIndex + 1 === currentState.total
+          ? currentState.currentIndex
+          : currentState.currentIndex + 1,
     }))
-  }
+  }, [])
 
-  const previous = () => {
+  const previous = React.useCallback(() => {
     setState(currentState => ({
       ...currentState,
-      currentIndex: state.currentIndex <= 0 ? state.currentIndex : state.currentIndex - 1,
+      currentIndex:
+        currentState.currentIndex <= 0 ? currentState.currentIndex : currentState.currentIndex - 1,
     }))
-  }
+  }, [])
 
-  return {
-    ...state,
-    setCurrentIndex,
-    next,
-    previous,
-  }
+  return React.useMemo(
+    () => ({
+      ...state,
+      setCurrentIndex,
+      next,
+      previous,
+    }),
+    [state, setCurrentIndex, next, previous]
+  )
 }
