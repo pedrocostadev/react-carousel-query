@@ -18,15 +18,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "jsx-a11y"
-  ],
-  "ignorePatterns": [
-    "./index.d.ts",
-    "dist"
-  ],
+  "plugins": ["react", "react-hooks", "jsx-a11y"],
+  "ignorePatterns": ["index.d.ts", "dist"],
   "settings": {
     "react": {
       "version": "detect"
