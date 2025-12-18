@@ -29,7 +29,21 @@ Working demo [here](https://react-carousel-query.vercel.app/)
 npm install react-carousel-query
 ```
 
+## Props
+
+| Prop          | Type       | Default      | Description                                                                                                                |
+| ------------- | ---------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
+| `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument. You can render just an img or any other React element.    |
+| `getData`     | `function` | **required** | Async function to fetch items. Receives `{ offset, cursor, limit }` and must return `{ total, items }`.                    |
+| `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call. Data is fetched preemptively as the user navigates, ensuring smooth transitions. |
+| `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                              |
+| `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                       |
+| `renderArrow` | `function` | `undefined`  | Custom render function for arrows.                                                                                         |
+| `renderBadge` | `function` | `undefined`  | Custom render function for the index badge.                                                                                |
+
 ## Usage
+
+### Basic Example (Offset-based pagination)
 
 ```jsx
 import ReactCarouselQuery from 'react-carousel-query'
@@ -39,8 +53,8 @@ const getData = async ({ offset, limit }) => {
   const response = await fetch(`https://api.example.com/items?offset=${offset}&limit=${limit}`)
   const { data } = await response.json()
   return {
-    total: data.total,
-    items: data.results.map(item => ({ ...item, id: item.name })),
+    total: data.total, // Total number of items available
+    items: data.results.map(item => ({ ...item, id: item.name })), // Each item must have a unique id
   }
 }
 
@@ -52,50 +66,9 @@ const App = () => (
 )
 ```
 
-For a complete working example, check out our [demo code](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js).
-
-## Props
-
-| Prop          | Type       | Default      | Description                                                                                                                |
-| ------------- | ---------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
-| `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument. You can render just an img or any other React element.    |
-| `getData`     | `function` | **required** | Async function to fetch items. Must return `{ total, items }`.                                                             |
-| `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call. Data is fetched preemptively as the user navigates, ensuring smooth transitions. |
-| `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                              |
-| `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                       |
-| `renderArrow` | `function` | `undefined`  | Custom render function for arrows.                                                                                         |
-| `renderBadge` | `function` | `undefined`  | Custom render function for the index badge.                                                                                |
-
-### getData Response Format
-
-The `getData` function receives `{ offset, cursor, limit }` and must return an object with:
-
-#### Offset-based pagination (default)
-
-```ts
-// Request: { offset: number, cursor: null, limit: number }
-// Response:
-{
-  total: number    // Total number of items available
-  items: Array<{ id: string | number, ...rest }>  // Array of items (each must have a unique id)
-}
-```
-
-#### Cursor-based pagination
+### Cursor-based pagination
 
 To use cursor-based pagination, return `nextCursor` in your response. The component auto-detects the pagination mode:
-
-```ts
-// Request: { offset: number, cursor: string | null, limit: number }
-// Response:
-{
-  total?: number   // Optional - will be inferred from items if not provided
-  items: Array<{ id: string | number, ...rest }>
-  nextCursor: string | null  // null when no more data available
-}
-```
-
-**Example with cursor pagination:**
 
 ```jsx
 const getData = async ({ cursor, limit }) => {
@@ -107,12 +80,14 @@ const getData = async ({ cursor, limit }) => {
   const { data, nextCursor, totalCount } = await response.json()
 
   return {
-    items: data.map(item => ({ ...item, id: item.id })),
+    items: data,
     nextCursor, // null when there are no more pages
-    total: totalCount, // optional
+    total: totalCount, // optional - will be inferred from items if not provided
   }
 }
 ```
+
+For a complete working example, check out our [demo code](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.jsx).
 
 ## Setup
 
