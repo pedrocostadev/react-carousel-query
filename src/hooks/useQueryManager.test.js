@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, waitFor } from '@testing-library/react'
+import { describe, test, expect, vi } from 'vitest'
 import { useQueryManagerProvider } from '@hooks/useQueryManager'
 
 import { callTimes } from '@utils/'
@@ -17,34 +18,36 @@ describe('useQueryManager', () => {
   }
 
   test('should save the items and total', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useQueryManagerProvider(props))
+    const { result } = renderHook(() => useQueryManagerProvider(props))
 
-    await waitForNextUpdate()
-
-    expect(result.current.items).toEqual(MOCK_ITEMS)
+    await waitFor(() => {
+      expect(result.current.items).toEqual(MOCK_ITEMS)
+    })
     expect(result.current.total).toEqual(TOTAL)
   })
 
   test('should update offset', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useQueryManagerProvider(props))
+    const { result } = renderHook(() => useQueryManagerProvider(props))
 
-    await waitForNextUpdate()
-
-    expect(result.current.offset).toEqual(OFFSET * 2)
+    await waitFor(() => {
+      expect(result.current.offset).toEqual(OFFSET * 2)
+    })
   })
 
   test('should concat items', async () => {
-    const getData = jest.fn(() => {
+    const getData = vi.fn(() => {
       return { offset: 2, total: 6, items: MOCK_ITEMS }
     })
 
-    const { result, waitForNextUpdate } = renderHook(() =>
+    const { result } = renderHook(() =>
       useQueryManagerProvider({
         getData,
       })
     )
 
-    await waitForNextUpdate()
+    await waitFor(() => {
+      expect(result.current.items.length).toBeGreaterThan(0)
+    })
 
     callTimes(5, () => {
       act(() => {
@@ -52,16 +55,18 @@ describe('useQueryManager', () => {
       })
     })
 
-    await waitForNextUpdate()
-
-    expect(result.current.items).toEqual(MOCK_ITEMS.concat(MOCK_ITEMS))
+    await waitFor(() => {
+      expect(result.current.items).toEqual(MOCK_ITEMS.concat(MOCK_ITEMS))
+    })
     expect(getData).toBeCalledTimes(2)
   })
 
   test('should update currentIndex on next', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useQueryManagerProvider(props))
+    const { result } = renderHook(() => useQueryManagerProvider(props))
 
-    await waitForNextUpdate()
+    await waitFor(() => {
+      expect(result.current.items.length).toBeGreaterThan(0)
+    })
 
     act(() => {
       result.current.next()
@@ -71,9 +76,11 @@ describe('useQueryManager', () => {
   })
 
   test('should update currentIndex on previous', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useQueryManagerProvider(props))
+    const { result } = renderHook(() => useQueryManagerProvider(props))
 
-    await waitForNextUpdate()
+    await waitFor(() => {
+      expect(result.current.items.length).toBeGreaterThan(0)
+    })
 
     act(() => {
       result.current.next()
@@ -83,9 +90,11 @@ describe('useQueryManager', () => {
   })
 
   test('should setCurrentIndex', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => useQueryManagerProvider(props))
+    const { result } = renderHook(() => useQueryManagerProvider(props))
 
-    await waitForNextUpdate()
+    await waitFor(() => {
+      expect(result.current.items.length).toBeGreaterThan(0)
+    })
 
     act(() => {
       result.current.setCurrentIndex(2)

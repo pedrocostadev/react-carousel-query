@@ -1,4 +1,4 @@
-import ReactCarouselQuery from '@components/reactCarouselQuery'
+import ReactCarouselQuery from '@components/reactCarouselQuery/index.jsx'
 import ReactCarousel from '@components/reactCarousel'
 import useSlider from '@hooks/useSlider'
 

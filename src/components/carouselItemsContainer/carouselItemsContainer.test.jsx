@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { render } from '@testing-library/react'
+import { describe, test, expect, vi } from 'vitest'
 import CarouselItemsContainer from './carouselItemsContainer'
 
 describe('<CarouselItemsContainer />', () => {
@@ -12,8 +13,8 @@ describe('<CarouselItemsContainer />', () => {
     renderBadge: BadgeFn,
     currentIndex: 0,
     total: 2,
-    next: jest.fn(),
-    previous: jest.fn(),
+    next: vi.fn(),
+    previous: vi.fn(),
   }
 
   const renderCarouselItemsContainer = props =>

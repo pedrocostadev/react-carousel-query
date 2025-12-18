@@ -1,9 +1,10 @@
 import React from 'react'
 import { render, fireEvent } from '@testing-library/react'
+import { describe, test, expect, vi } from 'vitest'
 import Arrow from './arrow'
 
 describe('<Arrow />', () => {
-  const onClick = jest.fn()
+  const onClick = vi.fn()
 
   test('It should render', () => {
     const button = render(<Arrow variant="left" onClick={onClick} />)

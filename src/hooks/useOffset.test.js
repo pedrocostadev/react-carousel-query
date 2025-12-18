@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
+import { describe, test, expect } from 'vitest'
 import useOffset from '@hooks/useOffset'
 
 import { callTimes } from '@utils/'

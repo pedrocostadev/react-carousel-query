@@ -1,5 +1,6 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import { describe, test, expect, vi } from 'vitest'
 import BadgeIndex from './badgeIndex'
 
 describe('<BadgeIndex />', () => {
@@ -24,7 +25,7 @@ describe('<BadgeIndex />', () => {
   })
 
   test('It should call the custom render function when passed', () => {
-    const renderFn = jest.fn(() => <p>test</p>)
+    const renderFn = vi.fn(() => <p>test</p>)
     render(<BadgeIndex {...props} renderBadge={renderFn} />)
     expect(renderFn).toHaveBeenCalledWith(props)
   })

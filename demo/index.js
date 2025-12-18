@@ -5,7 +5,7 @@ import ReactCarouselQuery from '../src'
 
 const getUrl = (offset, limit) => {
   const BASE_URL = 'https://gateway.marvel.com/v1/public/characters?'
-  const apikey = `apikey=${process.env.MARVEL_API_KEY}`
+  const apikey = `apikey=${import.meta.env.VITE_MARVEL_API_KEY}`
   const params = `&offset=${offset}&limit=${limit}`
   return `${BASE_URL}${apikey}${params}`
 }
