@@ -2,6 +2,8 @@
 
 [![NPM](https://nodei.co/npm/react-carousel-query.png)](https://npmjs.org/package/react-carousel-query)
 
+[![TypeScript](https://img.shields.io/badge/TypeScript-Supported-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 - React Component
 - Developed to be used as a Infinite Carousel but can be used also with limited resources
 - Handles the pagination requests for you
