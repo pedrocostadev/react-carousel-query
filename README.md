@@ -6,7 +6,7 @@
 
 | Statements                                                                                      | Branches                                                                                      | Functions                                                                                      | Lines                                                                                      |
 | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| ![Statements](https://img.shields.io/badge/Coverage-98.58%25-brightgreen.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-97.29%25-brightgreen.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-95.23%25-brightgreen.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-98.58%25-brightgreen.svg 'Make me better!') |
+| ![Statements](https://img.shields.io/badge/Coverage-98.64%25-brightgreen.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-97.41%25-brightgreen.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-95.23%25-brightgreen.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-98.64%25-brightgreen.svg 'Make me better!') |
 
 - Lightweight React component with minimal footprint
 - Infinite carousel with automatic pagination management
@@ -34,7 +34,7 @@ npm install react-carousel-query
 | Prop          | Type       | Default      | Description                                                                                                                |
 | ------------- | ---------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument. You can render just an img or any other React element.    |
-| `getData`     | `function` | **required** | Async function to fetch items. Receives `{ offset, cursor, limit }` and must return `{ total, items }`.                    |
+| `getData`     | `function` | **required** | Async function to fetch items. Receives `{ offset, cursor, limit }` and must return `{ total, items }`. Each item must have an `id` property (`string` or `number`). |
 | `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call. Data is fetched preemptively as the user navigates, ensuring smooth transitions. |
 | `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                              |
 | `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                       |
@@ -54,7 +54,7 @@ const getData = async ({ offset, limit }) => {
   const { data } = await response.json()
   return {
     total: data.total, // Total number of items available
-    items: data.results.map(item => ({ ...item, id: item.name })), // Each item must have a unique id
+    items: data, // Each item must have an `id` property (string | number)
   }
 }
 
