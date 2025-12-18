@@ -24,6 +24,8 @@ Demo [here](https://react-carousel-query.vercel.app/)
 
 ## Installation
 
+**Requirements:** React 16.8.0 or higher
+
 ```bash
 npm install react-carousel-query
 ```

@@ -16,7 +16,7 @@
 
 | Category        | Technology                                     |
 | --------------- | ---------------------------------------------- |
-| Framework       | React 18                                       |
+| Framework       | React 16.8+                                    |
 | Language        | JavaScript (ES2021) with JSX                   |
 | Build           | Vite 6                                         |
 | Styling         | CSS Modules (`.module.css`)                    |
