@@ -5,44 +5,69 @@ exports[`<ReactCarouselQuery /> > should match snapshot 1`] = `
   <div
     class="container fullHeight fullWidth positionRelative overflowHidden"
   >
-    <span
-      class="badgeIndex fadeInFadeOut badgeIndex"
+    <section
+      aria-label="Carousel"
+      aria-roledescription="carousel"
+      class="carouselSection"
+      tabindex="0"
     >
-      1
-      /3
-    </span>
-    <div
-      class="container flexDisplay alignCenter fullHeight"
-      style="transform: translateX(0px); transition-duration: 0s;"
-    >
+      <span
+        aria-atomic="true"
+        aria-live="polite"
+        class="badgeIndex fadeInFadeOut badgeIndex"
+        role="status"
+      >
+        <span
+          class="srOnly"
+        >
+          Slide 
+        </span>
+        1
+        /3
+      </span>
       <div
-        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+        aria-live="off"
+        class="container flexDisplay alignCenter fullHeight"
+        style="transform: translateX(0px); transition-duration: 0s;"
       >
         <div
-          data-testid="item-1"
+          aria-label="1 of 3"
+          aria-roledescription="slide"
+          class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+          role="group"
         >
-          Item 1
+          <div
+            data-testid="item-1"
+          >
+            Item 1
+          </div>
         </div>
-      </div>
-      <div
-        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-      >
         <div
-          data-testid="item-2"
+          aria-label="2 of 3"
+          aria-roledescription="slide"
+          class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+          role="group"
         >
-          Item 2
+          <div
+            data-testid="item-2"
+          >
+            Item 2
+          </div>
         </div>
-      </div>
-      <div
-        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-      >
         <div
-          data-testid="item-3"
+          aria-label="3 of 3"
+          aria-roledescription="slide"
+          class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+          role="group"
         >
-          Item 3
+          <div
+            data-testid="item-3"
+          >
+            Item 3
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;

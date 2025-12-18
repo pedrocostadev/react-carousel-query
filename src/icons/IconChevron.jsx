@@ -13,6 +13,8 @@ const IconChevron = ({ className }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     preserveAspectRatio="xMidYMax meet"
+    aria-hidden="true"
+    focusable="false"
   >
     <polyline points="1 1 3.77984472 4 6.53846154 1" />
   </svg>

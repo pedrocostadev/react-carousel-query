@@ -5,7 +5,6 @@
   z-index: 1;
   font-size: 14px;
   border: none;
-  outline: none;
   color: white;
   padding: 0;
   height: 40px;
@@ -17,6 +16,28 @@
   background-color: rgba(31, 30, 30, 0.5);
   border-radius: 50%;
   cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.arrowButton:focus {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.arrowButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.arrowButton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}
+
+.arrowButton:hover {
+  background-color: rgba(31, 30, 30, 0.8);
 }
 
 .right {

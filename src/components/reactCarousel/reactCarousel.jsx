@@ -19,8 +19,10 @@ const ReactCarousel = ({ children, ...props }) => {
         total={total}
         {...props}
       >
-        {React.Children.map(children, child => (
-          <CarouselItem>{child}</CarouselItem>
+        {React.Children.map(children, (child, index) => (
+          <CarouselItem index={index + 1} total={total}>
+            {child}
+          </CarouselItem>
         ))}
       </CarouselItemsContainer>
     </Box>

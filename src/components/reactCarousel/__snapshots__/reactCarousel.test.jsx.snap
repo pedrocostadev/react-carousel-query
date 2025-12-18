@@ -5,43 +5,60 @@ exports[`<ReactCarousel /> > should match snapshot 1`] = `
   <div
     class="container fullHeight fullWidth positionRelative overflowHidden"
   >
-    <span
-      data-testid="badge"
+    <section
+      aria-label="Carousel"
+      aria-roledescription="carousel"
+      class="carouselSection"
+      tabindex="0"
     >
-      1/3
-    </span>
-    <div
-      class="container flexDisplay alignCenter fullHeight"
-      style="transform: translateX(0px); transition-duration: 0s;"
-    >
+      <span
+        data-testid="badge"
+      >
+        1/3
+      </span>
       <div
-        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+        aria-live="off"
+        class="container flexDisplay alignCenter fullHeight"
+        style="transform: translateX(0px); transition-duration: 0s;"
       >
         <div
-          data-testid="slide-1"
+          aria-label="1 of 3"
+          aria-roledescription="slide"
+          class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+          role="group"
         >
-          Slide 1
+          <div
+            data-testid="slide-1"
+          >
+            Slide 1
+          </div>
         </div>
-      </div>
-      <div
-        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-      >
         <div
-          data-testid="slide-2"
+          aria-label="2 of 3"
+          aria-roledescription="slide"
+          class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+          role="group"
         >
-          Slide 2
+          <div
+            data-testid="slide-2"
+          >
+            Slide 2
+          </div>
         </div>
-      </div>
-      <div
-        class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
-      >
         <div
-          data-testid="slide-3"
+          aria-label="3 of 3"
+          aria-roledescription="slide"
+          class="container fullHeight fullWidth fullMaxHeight fullMinWidth"
+          role="group"
         >
-          Slide 3
+          <div
+            data-testid="slide-3"
+          >
+            Slide 3
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </div>
 `;

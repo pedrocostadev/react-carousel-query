@@ -3,8 +3,16 @@
 exports[`<BadgeIndex /> > It should render 1`] = `
 <div>
   <span
+    aria-atomic="true"
+    aria-live="polite"
     class="badgeIndex fadeInFadeOut"
+    role="status"
   >
+    <span
+      class="srOnly"
+    >
+      Slide 
+    </span>
     1
     /3
   </span>
@@ -14,8 +22,16 @@ exports[`<BadgeIndex /> > It should render 1`] = `
 exports[`<BadgeIndex /> > It should render only current index where there is no total 1`] = `
 <div>
   <span
+    aria-atomic="true"
+    aria-live="polite"
     class="badgeIndex fadeInFadeOut"
+    role="status"
   >
+    <span
+      class="srOnly"
+    >
+      Slide 
+    </span>
     222
   </span>
 </div>

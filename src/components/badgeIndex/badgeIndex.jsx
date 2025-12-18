@@ -27,12 +27,16 @@ const BadgeIndex = ({ currentIndex, total, renderBadge, className, ...props }) =
   return (
     <span
       {...props}
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
       className={classnames(
         styles.badgeIndex,
         { [styles.fadeInFadeOut]: showAnimation },
         className
       )}
     >
+      <span className={styles.srOnly}>Slide </span>
       {currentIndex}
       {total ? `/${total}` : ''}
     </span>

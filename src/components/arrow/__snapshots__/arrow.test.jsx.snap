@@ -6,12 +6,16 @@ exports[`<Arrow /> > It should render 1`] = `
   "baseElement": <body>
     <div>
       <button
+        aria-label="Previous slide"
         class="arrowButton left"
         data-testid="arrow-button-left"
+        type="button"
       >
         <svg
+          aria-hidden="true"
           fill="none"
           fill-rule="evenodd"
+          focusable="false"
           height="15"
           preserveAspectRatio="xMidYMax meet"
           stroke="currentColor"
@@ -29,12 +33,16 @@ exports[`<Arrow /> > It should render 1`] = `
   </body>,
   "container": <div>
     <button
+      aria-label="Previous slide"
       class="arrowButton left"
       data-testid="arrow-button-left"
+      type="button"
     >
       <svg
+        aria-hidden="true"
         fill="none"
         fill-rule="evenodd"
+        focusable="false"
         height="15"
         preserveAspectRatio="xMidYMax meet"
         stroke="currentColor"

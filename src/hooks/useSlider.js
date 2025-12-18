@@ -175,6 +175,19 @@ const useSlider = ({ containerRef, next, previous, currentIndex, total }) => {
     [onMouseLeave, onMouseMove, onMouseDown, onMouseUp, onTouchEnd, onTouchMove, onTouchStart]
   )
 
+  const onKeyDown = React.useCallback(
+    evt => {
+      if (evt.key === 'ArrowLeft') {
+        evt.preventDefault()
+        onPrevious()
+      } else if (evt.key === 'ArrowRight') {
+        evt.preventDefault()
+        onNext()
+      }
+    },
+    [onNext, onPrevious]
+  )
+
   return React.useMemo(
     () => ({
       transitionDuration,
@@ -182,8 +195,9 @@ const useSlider = ({ containerRef, next, previous, currentIndex, total }) => {
       events,
       onNext,
       onPrevious,
+      onKeyDown,
     }),
-    [transitionDuration, offset, events, onNext, onPrevious]
+    [transitionDuration, offset, events, onNext, onPrevious, onKeyDown]
   )
 }
 

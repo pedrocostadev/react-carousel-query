@@ -20,11 +20,12 @@ const CarouselItemsContainer = ({
   next,
   previous,
   children,
+  ariaLabel = 'Carousel',
 }) => {
   useRerenderOnWindowResize()
   const containerRef = React.useRef(null)
 
-  const { events, onNext, onPrevious, offset, transitionDuration } = useSlider({
+  const { events, onNext, onPrevious, offset, transitionDuration, onKeyDown } = useSlider({
     containerRef,
     next,
     previous,
@@ -43,7 +44,15 @@ const CarouselItemsContainer = ({
   )
 
   return (
-    <>
+    // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
+    <section
+      aria-roledescription="carousel"
+      aria-label={ariaLabel}
+      onKeyDown={onKeyDown}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+      tabIndex={0}
+      className={styles.carouselSection}
+    >
       {!hideIndex && (
         <BadgeIndex
           renderBadge={renderBadge}
@@ -62,11 +71,12 @@ const CarouselItemsContainer = ({
         alignCenter
         className={styles.container}
         style={containerStyle}
+        aria-live="off"
       >
         {children}
       </FlexContainer>
       {shouldRenderArrows && <Arrow renderArrow={renderArrow} variant="right" onClick={onNext} />}
-    </>
+    </section>
   )
 }
 
@@ -80,6 +90,7 @@ CarouselItemsContainer.propTypes = {
   next: PropTypes.func.isRequired,
   previous: PropTypes.func.isRequired,
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
+  ariaLabel: PropTypes.string,
 }
 
 export default CarouselItemsContainer

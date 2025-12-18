@@ -7,6 +7,11 @@ import Button from '@primitives/button'
 
 import styles from './arrow.module.css'
 
+const ariaLabels = {
+  left: 'Previous slide',
+  right: 'Next slide',
+}
+
 const Arrow = ({ variant, renderArrow, ...buttonProps }) => {
   if (typeof renderArrow === 'function') {
     return renderArrow({ variant, ...buttonProps })
@@ -15,6 +20,7 @@ const Arrow = ({ variant, renderArrow, ...buttonProps }) => {
   return (
     <Button
       data-testid={`arrow-button-${variant}`}
+      aria-label={ariaLabels[variant]}
       {...buttonProps}
       className={classnames(styles.arrowButton, styles[variant])}
     >

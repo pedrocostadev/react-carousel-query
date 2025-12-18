@@ -18,8 +18,14 @@ const ReactCarouselQuery = ({ renderItem, ...props }) => {
         next={next}
         previous={previous}
       >
-        {items.map(item => (
-          <CarouselItem key={item.id} item={item} renderItem={renderItem} />
+        {items.map((item, index) => (
+          <CarouselItem
+            key={item.id}
+            item={item}
+            renderItem={renderItem}
+            index={index + 1}
+            total={total}
+          />
         ))}
       </CarouselItemsContainer>
     </Box>
