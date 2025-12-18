@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { QueryManagerProvider } from '@hooks/useQueryManager'
+import { QueryManagerProvider } from '@hooks/QueryManagerProvider'
 
 import ReactCarouselQuery from './reactCarouselQuery'
 

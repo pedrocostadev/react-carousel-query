@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const DEFAULT_STEP = 3
 
@@ -63,19 +62,4 @@ export const useQueryManagerProvider = ({ getData, fetchStep = DEFAULT_STEP }) =
     next,
     previous,
   }
-}
-
-export const QueryManagerProvider = ({ children, getData, fetchStep }) => {
-  const queryManager = useQueryManagerProvider({ getData, fetchStep })
-  return (
-    <UseQueryManagerContext.Provider value={queryManager}>
-      {children}
-    </UseQueryManagerContext.Provider>
-  )
-}
-
-QueryManagerProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  getData: PropTypes.func.isRequired,
-  fetchStep: PropTypes.number,
 }
