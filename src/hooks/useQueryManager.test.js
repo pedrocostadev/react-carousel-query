@@ -108,3 +108,124 @@ describe('useQueryManager', () => {
     expect(result.current.currentIndex).toEqual(2)
   })
 })
+
+describe('useQueryManager - cursor pagination', () => {
+  const FETCH_STEP = 3
+
+  test('should use cursor from response for subsequent fetches', async () => {
+    const getData = vi
+      .fn()
+      .mockResolvedValueOnce({
+        items: [{ id: '1' }, { id: '2' }, { id: '3' }],
+        nextCursor: 'cursor_page_2',
+      })
+      .mockResolvedValueOnce({
+        items: [{ id: '4' }, { id: '5' }, { id: '6' }],
+        nextCursor: 'cursor_page_3',
+      })
+
+    const { result } = renderHook(() => useQueryManagerProvider({ getData, fetchStep: FETCH_STEP }))
+
+    // Wait for initial fetch
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(3)
+    })
+    expect(getData).toHaveBeenCalledWith({ offset: 0, cursor: null, limit: FETCH_STEP })
+    expect(result.current.cursor).toBe('cursor_page_2')
+    expect(result.current.hasMore).toBe(true)
+
+    // Navigate to trigger second fetch
+    act(() => {
+      result.current.next()
+      result.current.next()
+    })
+
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(6)
+    })
+    expect(getData).toHaveBeenCalledWith({ offset: 3, cursor: 'cursor_page_2', limit: FETCH_STEP })
+    expect(result.current.cursor).toBe('cursor_page_3')
+  })
+
+  test('should set hasMore to false when nextCursor is null', async () => {
+    const getData = vi
+      .fn()
+      .mockResolvedValueOnce({
+        items: [{ id: '1' }, { id: '2' }, { id: '3' }],
+        nextCursor: 'cursor_page_2',
+      })
+      .mockResolvedValueOnce({
+        items: [{ id: '4' }, { id: '5' }],
+        nextCursor: null,
+      })
+
+    const { result } = renderHook(() => useQueryManagerProvider({ getData, fetchStep: FETCH_STEP }))
+
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(3)
+    })
+    expect(result.current.hasMore).toBe(true)
+
+    act(() => {
+      result.current.next()
+      result.current.next()
+    })
+
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(5)
+    })
+    expect(result.current.hasMore).toBe(false)
+  })
+
+  test('should infer total from items when not provided in cursor mode', async () => {
+    const getData = vi.fn().mockResolvedValueOnce({
+      items: [{ id: '1' }, { id: '2' }, { id: '3' }],
+      nextCursor: null,
+    })
+
+    const { result } = renderHook(() => useQueryManagerProvider({ getData, fetchStep: FETCH_STEP }))
+
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(3)
+    })
+    expect(result.current.total).toBe(3)
+  })
+
+  test('should use provided total in cursor mode when available', async () => {
+    const getData = vi.fn().mockResolvedValueOnce({
+      items: [{ id: '1' }, { id: '2' }, { id: '3' }],
+      total: 10,
+      nextCursor: 'next',
+    })
+
+    const { result } = renderHook(() => useQueryManagerProvider({ getData, fetchStep: FETCH_STEP }))
+
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(3)
+    })
+    expect(result.current.total).toBe(10)
+  })
+
+  test('should not fetch more when hasMore is false in cursor mode', async () => {
+    const getData = vi.fn().mockResolvedValueOnce({
+      items: [{ id: '1' }, { id: '2' }, { id: '3' }],
+      nextCursor: null,
+    })
+
+    const { result } = renderHook(() => useQueryManagerProvider({ getData, fetchStep: FETCH_STEP }))
+
+    await waitFor(() => {
+      expect(result.current.items.length).toBe(3)
+    })
+
+    act(() => {
+      result.current.next()
+      result.current.next()
+    })
+
+    // Should not trigger another fetch since hasMore is false
+    await waitFor(() => {
+      expect(getData).toHaveBeenCalledTimes(1)
+    })
+  })
+})

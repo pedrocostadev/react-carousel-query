@@ -13,12 +13,21 @@ declare module 'react-carousel-query' {
     ariaLabel?: string
   }
 
+  interface GetDataParams {
+    offset: number
+    cursor: string | null
+    limit: number
+  }
+
+  interface GetDataResponse {
+    total?: number
+    items: Item[]
+    nextCursor?: string | null
+  }
+
   interface ReactCarouselQueryProps extends GeneralProps {
     renderItem: ({ item }: { item: Item }) => React.ReactElement
-    getData: ({ offset, limit }: { offset: number; limit: number }) => Promise<{
-      total: number
-      items: Item[]
-    }>
+    getData: (params: GetDataParams) => Promise<GetDataResponse>
     fetchStep?: number
   }
 

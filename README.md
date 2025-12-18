@@ -68,12 +68,49 @@ For a complete working example, check out our [demo code](https://github.com/ped
 
 ### getData Response Format
 
-The `getData` function receives `{ offset, limit }` and must return an object with:
+The `getData` function receives `{ offset, cursor, limit }` and must return an object with:
+
+#### Offset-based pagination (default)
 
 ```ts
+// Request: { offset: number, cursor: null, limit: number }
+// Response:
 {
   total: number    // Total number of items available
   items: Array<{ id: string | number, ...rest }>  // Array of items (each must have a unique id)
+}
+```
+
+#### Cursor-based pagination
+
+To use cursor-based pagination, return `nextCursor` in your response. The component auto-detects the pagination mode:
+
+```ts
+// Request: { offset: number, cursor: string | null, limit: number }
+// Response:
+{
+  total?: number   // Optional - will be inferred from items if not provided
+  items: Array<{ id: string | number, ...rest }>
+  nextCursor: string | null  // null when no more data available
+}
+```
+
+**Example with cursor pagination:**
+
+```jsx
+const getData = async ({ cursor, limit }) => {
+  const url = cursor
+    ? `https://api.example.com/items?cursor=${cursor}&limit=${limit}`
+    : `https://api.example.com/items?limit=${limit}`
+
+  const response = await fetch(url)
+  const { data, nextCursor, totalCount } = await response.json()
+
+  return {
+    items: data.map(item => ({ ...item, id: item.id })),
+    nextCursor, // null when there are no more pages
+    total: totalCount, // optional
+  }
 }
 ```
 
