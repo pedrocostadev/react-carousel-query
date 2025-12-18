@@ -15,15 +15,10 @@ declare module 'react-carousel-query' {
 
   interface ReactCarouselQueryProps extends GeneralProps {
     renderItem: ({ item }: { item: Item }) => React.ReactElement
-    getData: ({
-      offset,
-      limit,
-      total,
-    }: {
-      offset: number
-      limit: number
+    getData: ({ offset, limit }: { offset: number; limit: number }) => Promise<{
       total: number
-    }) => React.ReactElement
+      items: Item[]
+    }>
     fetchStep?: number
   }
 

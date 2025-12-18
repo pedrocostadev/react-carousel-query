@@ -1,76 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
 h1,
 h2,
 h3,
 h4,
 p {
-	padding: 0 5px;
-	margin: 0;
-}
-
-@font-face {
-	font-family: 'Marvel';
-	src: url('assets/MarvelRegular.ttf') format('truetype')
+  padding: 0 5px;
+  margin: 0;
 }
 
 h1 {
-	background-color: #ED161F;
-	text-transform: uppercase;
-	border: 1px solid;
-	display: inline;
-	text-align: center;
+  background: linear-gradient(135deg, #ee1515 0%, #ff6b6b 100%);
+  text-transform: uppercase;
+  border-radius: 12px;
+  display: inline-block;
+  text-align: center;
+  padding: 8px 20px;
+  color: #fff;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(238, 21, 21, 0.4);
 }
 
 header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	background-color: #151515;
-	width: 100%;
-	padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: 3px solid #ffcb05;
+}
+
+header h4 {
+  margin-top: 10px;
+  color: #a0a0c0;
+}
+
+header i {
+  color: #ee1515;
 }
 
 body {
-	margin: 0;
-	width: 100%;
-	height: 700px;
-	max-height: 700px;
-	overflow: hidden;
-	font-family: 'Marvel', Fallback, sans-serif;
-	background-color: #202020;
-	color: #FEFEFE;
+  margin: 0;
+  width: 100%;
+  height: 700px;
+  max-height: 700px;
+  overflow: hidden;
+  font-family: 'Lilita One', 'Arial Black', sans-serif;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  color: #fefefe;
 }
 
 @media only screen and (min-width: 768px) {
-	body {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .root {
-	width: 100%;
-	height: 90%;
+  width: 100%;
+  height: 90%;
 }
 
 @media only screen and (min-width: 768px) {
-	.root {
-		max-width: 600px;
-		box-shadow: 0px 3px 11px 0px rgba(255, 255, 255, 0.7);
-		margin-top: 20px;
-	}
+  .root {
+    max-width: 600px;
+    box-shadow:
+      0px 4px 20px 0px rgba(238, 21, 21, 0.3),
+      0px 0px 40px 0px rgba(255, 203, 5, 0.1);
+    margin-top: 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid #2a2a4a;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
-	.root {
-		max-width: 800px;
-	}
+  .root {
+    max-width: 800px;
+  }
 }
 
-.line-clamp {
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
+/* Card Styles */
+.card {
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid var(--type-color, #777);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--type-color) 15%, transparent) 0%,
+    color-mix(in srgb, var(--type-color) 25%, transparent) 100%
+  );
+}
+
+.card__image-container {
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--type-color) 20%, transparent) 0%,
+    transparent 70%
+  );
+}
+
+.card__image {
+  display: block;
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+  filter: drop-shadow(0 4px 20px color-mix(in srgb, var(--type-color) 40%, transparent));
+}
+
+.card__content {
+  height: 30%;
+  background: var(--type-color, #777);
+  padding: 12px 15px;
+  box-sizing: border-box;
+}
+
+.card__title {
+  color: #fff;
+  margin: 0 0 8px 0;
+  font-size: 1.3rem;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.card__types {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card__type-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+/* Pokemon Type Colors */
+.card--normal {
+  --type-color: #a8a878;
+}
+.card--fire {
+  --type-color: #f08030;
+}
+.card--water {
+  --type-color: #6890f0;
+}
+.card--electric {
+  --type-color: #f8d030;
+}
+.card--grass {
+  --type-color: #78c850;
+}
+.card--ice {
+  --type-color: #98d8d8;
+}
+.card--fighting {
+  --type-color: #c03028;
+}
+.card--poison {
+  --type-color: #a040a0;
+}
+.card--ground {
+  --type-color: #e0c068;
+}
+.card--flying {
+  --type-color: #a890f0;
+}
+.card--psychic {
+  --type-color: #f85888;
+}
+.card--bug {
+  --type-color: #a8b820;
+}
+.card--rock {
+  --type-color: #b8a038;
+}
+.card--ghost {
+  --type-color: #705898;
+}
+.card--dragon {
+  --type-color: #7038f8;
+}
+.card--dark {
+  --type-color: #705848;
+}
+.card--steel {
+  --type-color: #b8b8d0;
+}
+.card--fairy {
+  --type-color: #ee99ac;
 }

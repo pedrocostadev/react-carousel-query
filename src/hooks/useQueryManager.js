@@ -16,19 +16,19 @@ export const useQueryManagerProvider = ({ getData, fetchStep = DEFAULT_STEP }) =
 
   React.useEffect(() => {
     const isLastItem = state.currentIndex + 1 === state.total
-    const isLastItemFetched = state.currentIndex + 1 >= state.offset
+    const needsMoreItems = state.currentIndex + 1 >= state.offset
 
     const setData = data => {
-      const { offset: newOffset, items, total } = data
+      const { items, total } = data
       setState(currentState => ({
         ...currentState,
-        offset: newOffset + fetchStep,
+        offset: currentState.offset + fetchStep,
         total,
-        items: state.items.concat(items),
+        items: currentState.items.concat(items),
       }))
     }
     const fetchData = async () => {
-      if (!isLastItemFetched || isLastItem) {
+      if (!needsMoreItems || isLastItem) {
         return
       }
       const data = await getData({ offset: state.offset, limit: fetchStep })

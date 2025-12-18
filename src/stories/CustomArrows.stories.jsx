@@ -8,8 +8,6 @@ const pictures = [
 
 const getData = async () => ({
   items: pictures.map((picSrc, index) => ({ id: index, picSrc, name: `Picture ${index + 1}` })),
-  offset: 3,
-  limit: 3,
   total: 3,
 })
 

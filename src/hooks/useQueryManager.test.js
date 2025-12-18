@@ -2,19 +2,17 @@ import { renderHook, act, waitFor } from '@testing-library/react'
 import { describe, test, expect, vi } from 'vitest'
 import { useQueryManagerProvider } from '@hooks/useQueryManager'
 
-import { callTimes } from '@utils/'
-
 describe('useQueryManager', () => {
   const MOCK_ITEMS = [
     { id: '1', name: 'first' },
     { id: '2', name: 'second' },
   ]
 
-  const OFFSET = 3
   const TOTAL = 6
+  const FETCH_STEP = 3
 
   const props = {
-    getData: () => ({ offset: OFFSET, total: TOTAL, items: MOCK_ITEMS }),
+    getData: () => ({ total: TOTAL, items: MOCK_ITEMS }),
   }
 
   test('should save the items and total', async () => {
@@ -30,13 +28,18 @@ describe('useQueryManager', () => {
     const { result } = renderHook(() => useQueryManagerProvider(props))
 
     await waitFor(() => {
-      expect(result.current.offset).toEqual(OFFSET * 2)
+      expect(result.current.offset).toEqual(FETCH_STEP)
     })
   })
 
   test('should concat items', async () => {
+    const BATCH_ITEMS = [
+      { id: '1', name: 'first' },
+      { id: '2', name: 'second' },
+      { id: '3', name: 'third' },
+    ]
     const getData = vi.fn(() => {
-      return { offset: 2, total: 6, items: MOCK_ITEMS }
+      return { total: 6, items: BATCH_ITEMS }
     })
 
     const { result } = renderHook(() =>
@@ -45,20 +48,23 @@ describe('useQueryManager', () => {
       })
     )
 
+    // Wait for initial fetch
     await waitFor(() => {
-      expect(result.current.items.length).toBeGreaterThan(0)
+      expect(result.current.items.length).toBe(3)
+    })
+    expect(getData).toHaveBeenCalledTimes(1)
+
+    // Navigate to trigger second fetch (at index 2, we need more data)
+    act(() => {
+      result.current.next() // index 1
+      result.current.next() // index 2 - triggers fetch
     })
 
-    callTimes(5, () => {
-      act(() => {
-        result.current.next()
-      })
-    })
-
     await waitFor(() => {
-      expect(result.current.items).toEqual(MOCK_ITEMS.concat(MOCK_ITEMS))
+      expect(result.current.items.length).toBe(6)
     })
-    expect(getData).toBeCalledTimes(2)
+    expect(getData).toHaveBeenCalledTimes(2)
+    expect(result.current.items).toEqual(BATCH_ITEMS.concat(BATCH_ITEMS))
   })
 
   test('should update currentIndex on next', async () => {

@@ -151,7 +151,7 @@ npm run cm              # Interactive conventional commit prompt
 
 1. Ensure Node.js 20.x is installed (use `nvm use` if nvm is available)
 2. Run `npm install` to install dependencies
-3. Demo requires `VITE_MARVEL_API_KEY` in `demo/.env` (optional for development)
+3. Demo uses PokéAPI (no API key required)
 
 ## Key Implementation Details
 
@@ -160,7 +160,7 @@ npm run cm              # Interactive conventional commit prompt
 1. `QueryManagerProvider` wraps carousel, manages fetch state
 2. `useQueryManager` hook provides: `items`, `currentIndex`, `total`, `next`, `previous`
 3. `getData` prop called automatically when approaching end of fetched items
-4. Expected response format: `{ offset: number, total: number, items: { id: string|number }[] }`
+4. Expected response format: `{ total: number, items: { id: string|number }[] }`
 
 ### Gesture Handling
 

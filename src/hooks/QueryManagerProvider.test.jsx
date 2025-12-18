@@ -11,7 +11,6 @@ describe('<QueryManagerProvider />', () => {
   ]
 
   const mockGetData = vi.fn(() => ({
-    offset: 2,
     total: 2,
     items: MOCK_ITEMS,
   }))
@@ -58,7 +57,6 @@ describe('<QueryManagerProvider />', () => {
 
   test('should pass fetchStep to getData', async () => {
     const getDataWithStep = vi.fn(() => ({
-      offset: 5,
       total: 10,
       items: MOCK_ITEMS,
     }))

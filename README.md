@@ -39,7 +39,6 @@ const getData = async ({ offset, limit }) => {
   const response = await fetch(`https://api.example.com/items?offset=${offset}&limit=${limit}`)
   const { data } = await response.json()
   return {
-    offset: data.offset,
     total: data.total,
     items: data.results.map(item => ({ ...item, id: item.name })),
   }
@@ -60,7 +59,7 @@ For a complete working example, check out our [demo code](https://github.com/ped
 | Prop          | Type       | Default      | Description                                                                                                                |
 | ------------- | ---------- | ------------ | -------------------------------------------------------------------------------------------------------------------------- |
 | `renderItem`  | `function` | **required** | Render function for each slide. Receives `{ item }` as argument. You can render just an img or any other React element.    |
-| `getData`     | `function` | **required** | Async function to fetch items. Must return `{ offset, total, items }`.                                                     |
+| `getData`     | `function` | **required** | Async function to fetch items. Must return `{ total, items }`.                                                             |
 | `fetchStep`   | `number`   | `3`          | Number of items requested per fetch call. Data is fetched preemptively as the user navigates, ensuring smooth transitions. |
 | `hideIndex`   | `boolean`  | `false`      | Hide the index badge in the top right corner.                                                                              |
 | `showArrows`  | `boolean`  | `false`      | Show navigation arrows. Also enabled when `renderArrow` is provided.                                                       |
@@ -73,7 +72,6 @@ The `getData` function receives `{ offset, limit }` and must return an object wi
 
 ```ts
 {
-  offset: number   // Current offset position
   total: number    // Total number of items available
   items: Array<{ id: string | number, ...rest }>  // Array of items (each must have a unique id)
 }

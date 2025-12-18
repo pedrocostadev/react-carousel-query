@@ -1,1 +1,2 @@
-git diff HEAD --quiet && yarn test
+git diff HEAD --quiet || exit 0
+npm test

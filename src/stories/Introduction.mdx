@@ -2,45 +2,172 @@ import { Meta } from '@storybook/addon-docs/blocks'
 
 <Meta title="Docs/Introduction" />
 
-# ReactCarouselQuery
+# react-carousel-query
 
 [![NPM](https://nodei.co/npm/react-carousel-query.png)](https://npmjs.org/package/react-carousel-query)
 
-## Overview
+[![TypeScript](https://img.shields.io/badge/TypeScript-Supported-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-A **Infinite Carousel** Component made with React. It handles the pagination requests for you and is dependencies-free.
-Check the demo [here](https://react-carousel-query.vercel.app/).
-
-## Quick Features
-
-- Developed to be used as a Infinite Carousel but can be used also with limited resources
-- Handles the pagination requests for you
-- Dependencies free (only React and classnames)
-- Allow you to render slides as you wish
-- Ensures a good performance
-- Prepared for mobile and desktop
+- Lightweight React component with minimal footprint
+- Infinite carousel with automatic pagination management
+- Fetches data on demand as users navigate through slides
+- Zero external dependencies (only React and classnames)
+- Fully customizable slide, arrow, and badge rendering
+- Optimized for performance
+- Touch and mouse swipe support for mobile and desktop
 - TypeScript declarations included
-- Customizable
+
+Working demo [here](https://react-carousel-query.vercel.app/)
 
 ## Installation
+
+**Requirements:** React 16.8.0 or higher
 
 ```bash
 npm install react-carousel-query
 ```
 
-## How to import
+## Usage
 
 ```jsx
 import ReactCarouselQuery from 'react-carousel-query'
-import 'react-carousel-query/styles.css'
+import 'react-carousel-query/styles.css' // Required for styles
+
+const getData = async ({ offset, limit }) => {
+  const response = await fetch(`https://api.example.com/items?offset=${offset}&limit=${limit}`)
+  const { data } = await response.json()
+  return {
+    total: data.total,
+    items: data.results.map(item => ({ ...item, id: item.name })),
+  }
+}
+
+const App = () => (
+  <ReactCarouselQuery
+    renderItem={({ item }) => <img src={item.imgSrc} alt={item.name} />}
+    getData={getData}
+  />
+)
 ```
+
+For a complete working example, check out our [demo code](https://github.com/pedrocostadev/react-carousel-query/blob/main/demo/index.js).
 
 ## Props
 
-- `renderItem`\*: Render each slide as you wish!
-- `getData`\*: Async function that should return the fetched items. Should respect the following format: `{ offset: number; total: number; items: { id }[] }`
-- `fetchStep`: Number of items requested in each GET call (optional, default is 3)
-- `hideIndex`: Avoid displaying the index on top right corner (optional, default is false)
-- `showArrows`: Show arrows (optional, default is false). Passing the `renderArrow` prop also makes the arrows to render.
-- `renderBadge`: Render the badge component as you wish. (optional)
-- `renderArrow`: Render the arrow component as you wish. (optional)
+<table>
+  <thead>
+    <tr>
+      <th>Prop</th>
+      <th>Type</th>
+      <th>Default</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>renderItem</code>
+      </td>
+      <td>
+        <code>function</code>
+      </td>
+      <td>
+        <strong>required</strong>
+      </td>
+      <td>
+        Render function for each slide. Receives <code>{'{ item }'}</code> as argument. You can
+        render just an img or any other React element.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>getData</code>
+      </td>
+      <td>
+        <code>function</code>
+      </td>
+      <td>
+        <strong>required</strong>
+      </td>
+      <td>
+        Async function to fetch items. Must return <code>{'{ total, items }'}</code>.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>fetchStep</code>
+      </td>
+      <td>
+        <code>number</code>
+      </td>
+      <td>
+        <code>3</code>
+      </td>
+      <td>
+        Number of items requested per fetch call. Data is fetched preemptively as the user
+        navigates, ensuring smooth transitions.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>hideIndex</code>
+      </td>
+      <td>
+        <code>boolean</code>
+      </td>
+      <td>
+        <code>false</code>
+      </td>
+      <td>Hide the index badge in the top right corner.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>showArrows</code>
+      </td>
+      <td>
+        <code>boolean</code>
+      </td>
+      <td>
+        <code>false</code>
+      </td>
+      <td>
+        Show navigation arrows. Also enabled when <code>renderArrow</code> is provided.
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>renderArrow</code>
+      </td>
+      <td>
+        <code>function</code>
+      </td>
+      <td>
+        <code>undefined</code>
+      </td>
+      <td>Custom render function for arrows.</td>
+    </tr>
+    <tr>
+      <td>
+        <code>renderBadge</code>
+      </td>
+      <td>
+        <code>function</code>
+      </td>
+      <td>
+        <code>undefined</code>
+      </td>
+      <td>Custom render function for the index badge.</td>
+    </tr>
+  </tbody>
+</table>
+
+### getData Response Format
+
+The `getData` function receives `{ offset, limit }` and must return an object with:
+
+```ts
+{
+  total: number    // Total number of items available
+  items: Array<{ id: string | number, ...rest }>  // Array of items (each must have a unique id)
+}
+```
