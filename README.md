@@ -8,15 +8,14 @@
 | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | ![Statements](https://img.shields.io/badge/Coverage-98.58%25-brightgreen.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-97.29%25-brightgreen.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-95.23%25-brightgreen.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-98.58%25-brightgreen.svg 'Make me better!') |
 
-- React Component
-- Developed to be used as a Infinite Carousel but can be used also with limited resources
-- Handles the pagination requests for you
-- Dependencies free (only React and classnames)
-- Allow you to render slides as you wish
-- Ensures a good performance
-- Prepared for mobile and desktop
+- Lightweight React component with minimal footprint
+- Infinite carousel with automatic pagination management
+- Fetches data on demand as users navigate through slides
+- Zero external dependencies (only React and classnames)
+- Fully customizable slide, arrow, and badge rendering
+- Optimized for performance
+- Touch and mouse swipe support for mobile and desktop
 - TypeScript declarations included
-- Customizable
 
 Demo [here](https://react-carousel-query.vercel.app/)
 
